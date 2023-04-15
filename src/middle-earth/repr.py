@@ -4,7 +4,7 @@ class MyCoolClass:
 
     def __repr__(self):
         """Repr prints the python code to create this python object."""
-        return f"MyCoolClass(value={repr(self.value)})"
+        return f"MyCoolClass(value={self.value!r})"
 
 
 if __name__ == "__main__":
