@@ -3,54 +3,40 @@
 from __future__ import annotations
 
 
-class DocumentCollection:
-    paths: set[str] = set()
-    files = {}
-    files_are_being_opened: bool = False
+def handle_error(exception):
+    ...
 
-    def __init__(self, paths: list[str]):
-        for path in paths:
-            self.add_file(path)
 
-    def add_file(self, path: str) -> None:
-        self.paths.add(path)
-
-        if self.files_are_being_opened and path in self.paths:
-            self.files[path] = open(path, "w")
-
+class Something:
     def __enter__(self) -> None:
-        self.files_are_being_opened = True
-
-        for path in self.paths:
-            self.add_file(path)
+        print("entering with block")
 
     def __exit__(
             self, exception_type, exception_value,
             exception_traceback) -> None:
-        for path, file in self.files.items():
-            file.close()
+        print("exiting with block")
 
-        self.files_are_being_opened = False
-        self.files = {}
+        if (exception_value is not None):
+            print(f"exception '{exception_type}' "
+                  f"occurred at line {exception_traceback.tb_lineno}: "
+                  f"{exception_value}")
+
+            print("handling error")
+            handle_error(exception_value)
 
 
 def main() -> None:
-    documents = DocumentCollection(["doc1", "doc2", "doc3"])
+    doc = Something()
 
-    with documents:
-        for path, document in documents.files.items():
-            if document.writable():
-                document.write("Hello, world!")
+    with doc:
+        print("\nExecuting fancy function\n")
 
-        documents.add_file("doc4")
+    try:
+        with doc:
+            raise Exception("error")
 
-        documents.files["doc4"].write("Important data!")
-        print(documents.files)
-
-    documents.add_file("doc5")
-
-    with documents:
-        print(documents.files.keys())
+    except Exception:
+        pass
 
 
 if __name__ == "__main__":
