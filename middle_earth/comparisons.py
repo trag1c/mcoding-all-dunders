@@ -71,29 +71,29 @@ if __name__ == "__main__":
     print("\nGreater or equal than")
     print(f"a ≥ b  \t {a >= b}")       # False
     print(f"a ≥ c  \t {a >= c}")       # True
-    print(f"a ≥ √2 \t {a >= sqrt(2)}")  # True
+    print(f"a ≥ √2 \t {a >= sqrt(2)}") # True
 
     print("\nGreater than")
-    print(f"a > b  \t {a > b}")       # False
-    print(f"a > c  \t {a > c}")       # False
+    print(f"a > b  \t {a > b}")        # False
+    print(f"a > c  \t {a > c}")        # False
     print(f"a > √2 \t {a > sqrt(2)}")  # False
 
     print("\nLess or equal than")
     print(f"a ≤ b  \t {a <= b}")       # True
     print(f"a ≤ c  \t {a <= c}")       # True
-    print(f"a ≤ √2 \t {a <= sqrt(2)}")  # True
+    print(f"a ≤ √2 \t {a <= sqrt(2)}") # True
 
     print("\nLess than")
-    print(f"a < b  \t {a < b}")       # False
-    print(f"a < c  \t {a < c}")       # False
+    print(f"a < b  \t {a < b}")        # True
+    print(f"a < c  \t {a < c}")        # False
     print(f"a < √2 \t {a < sqrt(2)}")  # False
 
     print("\nEqual than")
     print(f"a = b  \t {a == b}")       # False
     print(f"a = c  \t {a == c}")       # True
-    print(f"a = √2 \t {a == sqrt(2)}")  # True
+    print(f"a = √2 \t {a == sqrt(2)}") # True
 
     print("\nNot equal than")
     print(f"a ≠ b  \t {a != b}")       # True
     print(f"a ≠ c  \t {a != c}")       # False
-    print(f"a ≠ √2 \t {a != sqrt(2)}")  # False
+    print(f"a ≠ √2 \t {a != sqrt(2)}") # False
