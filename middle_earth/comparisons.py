@@ -13,35 +13,35 @@ class Vector():
         self.mag = sqrt(self.x**2 + self.y**2)
 
     def __ge__(self, other: Self) -> bool:
-        '''Greater or equal than comparison'''
+        """Greater or equal than comparison"""
         if isinstance(other, Vector):
             return self.mag >= other.mag
         else:
             return self.mag >= other
 
     def __gt__(self, other: Self) -> bool:
-        '''Greater than comparison'''
+        """Greater than comparison"""
         if isinstance(other, Vector):
             return self.mag > other.mag
         else:
             return self.mag > other
 
     def __le__(self, other: Self) -> bool:
-        '''Less or equal than comparison'''
+        """Less or equal than comparison"""
         if isinstance(other, Vector):
             return self.mag <= other.mag
         else:
             return self.mag <= other
 
     def __lt__(self, other: Self) -> bool:
-        '''Less than comparison'''
+        """Less than comparison"""
         if isinstance(other, Vector):
             return self.mag < other.mag
         else:
             return self.mag < other
 
     def __eq__(self, other: Self) -> bool:
-        '''Equal comparison'''
+        """Equal comparison"""
         if isinstance(other, Vector):
             return self.mag == other.mag
         else:
