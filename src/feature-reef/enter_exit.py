@@ -7,7 +7,7 @@ def handle_error(exception):
     ...
 
 
-class Something:
+class Context:
     def __enter__(self) -> None:
         print("entering with block")
 
@@ -26,7 +26,7 @@ class Something:
 
 
 def main() -> None:
-    doc = Something()
+    doc = Context()
 
     with doc:
         print("\nExecuting fancy function\n")
