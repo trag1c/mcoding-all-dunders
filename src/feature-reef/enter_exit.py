@@ -8,8 +8,10 @@ def handle_error(exception):
 
 
 class Context:
-    def __enter__(self) -> None:
+    def __enter__(self) -> Context:
         print("entering with block")
+
+        return self
 
     def __exit__(
             self, exception_type, exception_value,
@@ -26,13 +28,11 @@ class Context:
 
 
 def main() -> None:
-    doc = Context()
-
-    with doc:
+    with Context() as ctx:
         print("\nExecuting fancy function\n")
 
     try:
-        with doc:
+        with Context() as ctx:
             raise Exception("error")
 
     except Exception:
