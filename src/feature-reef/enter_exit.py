@@ -8,6 +8,9 @@ def handle_error(exception):
 
 
 class Context:
+    def fancy_function(self) -> None:
+        print("executing fancy function")
+
     def __enter__(self) -> Context:
         print("entering with block")
 
@@ -29,7 +32,7 @@ class Context:
 
 def main() -> None:
     with Context() as ctx:
-        print("\nExecuting fancy function\n")
+        ctx.fancy_function()
 
     try:
         with Context() as ctx:
