@@ -47,7 +47,7 @@ class Vector():
         else:
             return self.mag == other
 
-    def __nq__(self, other: Self) -> bool:
+    def __ne__(self, other: Self) -> bool:
         return not self == other
 
 
