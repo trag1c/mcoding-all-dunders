@@ -24,15 +24,17 @@ class Context:
 
             print("ignoring error")
 
-        return True
+        return True  # Returning true should suppress the exception
 
 
 def main() -> None:
-    with Context() as ctx:
+    with Context() as ctx:  # Initializes ctx as a Context object
         ctx.fancy_function()
+    # Context.__exit__ gets called
 
     with Context() as ctx:
         raise Exception("error")
+    # Context.__exit__ suppresses the exception
 
 
 if __name__ == "__main__":
