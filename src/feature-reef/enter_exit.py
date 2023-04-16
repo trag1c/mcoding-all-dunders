@@ -30,9 +30,6 @@ class Context:
 def main() -> None:
     with Context() as ctx:  # Initializes ctx as a Context object
         ctx.fancy_function()
-    # Context.__exit__ gets called
-
-    with Context() as ctx:
         raise Exception("error")
     # Context.__exit__ suppresses the exception
 
