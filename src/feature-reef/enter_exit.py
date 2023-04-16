@@ -3,10 +3,6 @@
 from __future__ import annotations
 
 
-def handle_error(exception):
-    ...
-
-
 class Context:
     def fancy_function(self) -> None:
         print("executing fancy function")
@@ -18,7 +14,7 @@ class Context:
 
     def __exit__(
             self, exception_type, exception_value,
-            exception_traceback) -> None:
+            exception_traceback) -> bool:
         print("exiting with block")
 
         if (exception_value is not None):
@@ -26,20 +22,17 @@ class Context:
                   f"occurred at line {exception_traceback.tb_lineno}: "
                   f"{exception_value}")
 
-            print("handling error")
-            handle_error(exception_value)
+            print("ignoring error")
+
+        return True
 
 
 def main() -> None:
     with Context() as ctx:
         ctx.fancy_function()
 
-    try:
-        with Context() as ctx:
-            raise Exception("error")
-
-    except Exception:
-        pass
+    with Context() as ctx:
+        raise Exception("error")
 
 
 if __name__ == "__main__":
