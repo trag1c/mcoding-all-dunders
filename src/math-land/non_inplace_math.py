@@ -1,5 +1,6 @@
 # Dunders __add__, __sub__, __pos__, __neg__,
 # __mul__, __floordiv__, __truediv__, __divmod__, __mod__, __int__
+# __complex__, __abs__, __trunc__, __pow__
 
 from __future__ import annotations
 import math
