@@ -53,7 +53,7 @@ class Vector:
 
 if __name__ == "__main__":
 
-    print("""Define three vectors a,b and c, such that
+    print("""Define three vectors a, b and c, such that
     |a| < |b|
     |a| = |c|
     |a| = √2
