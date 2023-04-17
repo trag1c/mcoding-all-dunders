@@ -1,7 +1,7 @@
 from math import sqrt
 from typing import Self
 
-class Vector():
+class Vector:
     """
     2D vector with an x- and a y-component.
     Comparisons between vectors are based on their magnitude
