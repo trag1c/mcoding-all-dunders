@@ -1,5 +1,5 @@
 from math import sqrt
-from typing import Self
+from typing import Any
 
 class Vector:
     """
@@ -12,42 +12,42 @@ class Vector:
         self.y = y
         self.mag = sqrt(self.x**2 + self.y**2)
 
-    def __ge__(self, other: Self) -> bool:
+    def __ge__(self, other: Any) -> bool:
         """Greater or equal than comparison"""
         if isinstance(other, Vector):
             return self.mag >= other.mag
         else:
             return self.mag >= other
 
-    def __gt__(self, other: Self) -> bool:
+    def __gt__(self, other: Any) -> bool:
         """Greater than comparison"""
         if isinstance(other, Vector):
             return self.mag > other.mag
         else:
             return self.mag > other
 
-    def __le__(self, other: Self) -> bool:
+    def __le__(self, other: Any) -> bool:
         """Less or equal than comparison"""
         if isinstance(other, Vector):
             return self.mag <= other.mag
         else:
             return self.mag <= other
 
-    def __lt__(self, other: Self) -> bool:
+    def __lt__(self, other: Any) -> bool:
         """Less than comparison"""
         if isinstance(other, Vector):
             return self.mag < other.mag
         else:
             return self.mag < other
 
-    def __eq__(self, other: Self) -> bool:
+    def __eq__(self, other: Any) -> bool:
         """Equal comparison"""
         if isinstance(other, Vector):
             return self.mag == other.mag
         else:
             return self.mag == other
 
-    def __ne__(self, other: Self) -> bool:
+    def __ne__(self, other: Any) -> bool:
         return not self == other
 
 
