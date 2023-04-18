@@ -7,6 +7,15 @@ class Appliance:
     
     """
     def __init__(self, name:str, is_on:bool = False) -> None:
+        """Initialize the Appliance object
+        
+        name: str
+            Name of the Appliance
+
+        is_on: bool = False
+            Initial state of the Appliance
+        """
+
         self.name = name
         self.state = is_on
         
