@@ -89,6 +89,10 @@ def main():
     print("Absolute value plot2 area: {abs(plot2)}")  # Calls __abs__
     print(f"plot1 area being scaled by 3: {plot1 * 3}")  # Calls __mul__
 
+    # Calls __pow__
+    print(f"plot3 area being raised to the power of 3 {plot3 ** 3}")
+    # pow(plot3, 3) also works
+
     # Calls __floordiv__
     print(f"Divisions into plots of land from plot1 of exactly 9 area:"
           f"{plot1 // 9}")
