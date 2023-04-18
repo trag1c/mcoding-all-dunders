@@ -16,44 +16,33 @@ class Vector:
     def mag(self) -> float:
         return sqrt(self.x**2 + self.y**2)
 
+    @staticmethod
+    def _get_mag(other: Any) -> Any:
+        return other.mag if isinstance(other, Vector) else other
+
     def __ge__(self, other: Any) -> bool:
         """Greater or equal than comparison"""
-        if isinstance(other, Vector):
-            return self.mag >= other.mag
-        else:
-            return self.mag >= other
+        return self.mag >= self._get_mag(other)
 
     def __gt__(self, other: Any) -> bool:
         """Greater than comparison"""
-        if isinstance(other, Vector):
-            return self.mag > other.mag
-        else:
-            return self.mag > other
+        return self.mag > self._get_mag(other)
 
     def __le__(self, other: Any) -> bool:
         """Less or equal than comparison"""
-        if isinstance(other, Vector):
-            return self.mag <= other.mag
-        else:
-            return self.mag <= other
+        return self.mag <= self._get_mag(other)
 
     def __lt__(self, other: Any) -> bool:
         """Less than comparison"""
-        if isinstance(other, Vector):
-            return self.mag < other.mag
-        else:
-            return self.mag < other
+        return self.mag < self._get_mag(other)
 
     def __eq__(self, other: Any) -> bool:
         """Equal comparison"""
-        if isinstance(other, Vector):
-            return self.mag == other.mag
-        else:
-            return self.mag == other
+        return self.mag == self._get_mag(other)
 
     def __ne__(self, other: Any) -> bool:
         """Not equal comparison"""
-        return not self == other
+        return not self == self._get_mag(other)
 
 
 if __name__ == "__main__":
@@ -73,7 +62,7 @@ if __name__ == "__main__":
     print(f"|a| = {a.mag:.5f}")
     print(f"|b| = {b.mag:.5f}")
     print(f"|c| = {c.mag:.5f}")
-    print(f"√2  = {sqrt(2)}")
+    print(f"√2  = {sqrt(2):.5f}")
 
     print("\nGreater or equal than")
     print(f"a ≥ b  \t {a >= b}")  # False
