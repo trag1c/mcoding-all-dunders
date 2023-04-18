@@ -18,10 +18,6 @@ class Appliance:
 
         self.name = name
         self.state = is_on
-        
-    def switch(self):
-        """Switch the state of the Appliance """
-        self.state = not self.state
 
     def status(self) -> str:
         """Return a message with current status of the Appliance"""
@@ -30,11 +26,7 @@ class Appliance:
 
     def __call__(self) -> str:
         """Switch the state of the Appliance and return it's status"""
-
-        # Switch the appliance state
-        self.switch()
-
-        # Returns a message with the status
+        self.state = not self.state
         return self.status() + "\t(from __call__)"
     
     def __repr__(self) -> str:
