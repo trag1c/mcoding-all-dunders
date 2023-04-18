@@ -71,6 +71,7 @@ if __name__ == "__main__":
     print(f"|a| = {a.mag:.5f}")
     print(f"|b| = {b.mag:.5f}")
     print(f"|c| = {c.mag:.5f}")
+    print(f"√2  = {sqrt(2)}")
 
     print("\nGreater or equal than")
     print(f"a ≥ b  \t {a >= b}")       # False
