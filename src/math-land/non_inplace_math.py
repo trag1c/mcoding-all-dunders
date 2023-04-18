@@ -94,12 +94,12 @@ def main():
     # pow(plot3, 3) also works
 
     # Calls __floordiv__
-    print(f"Divisions into plots of land from plot1 of exactly 9 area:"
+    print(f"Divisions into plots of land from plot1 of exactly 9 area: "
           f"{plot1 // 9}")
     print(f"Divides plot2 into 5 pieces: {plot2 / 5}")  # Calls __truediv__
 
     divisions, remainder = divmod(plot1, 7)  # Calls __divmod__
-    print(f"plot1 can be divided into {divisions} plots of 7 area each"
+    print(f"plot1 can be divided into {divisions} plots of 7 area each "
           f"with a remainder of {remainder} area")
 
     # Calls __mod__
