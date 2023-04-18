@@ -10,7 +10,10 @@ class Vector:
     def __init__(self, x: float, y: float) -> None:
         self.x = x
         self.y = y
-        self.mag = sqrt(self.x**2 + self.y**2)
+
+    @property
+    def mag(self) -> float:
+        return sqrt(self.x**2 + self.y**2)
 
     def __ge__(self, other: Any) -> bool:
         """Greater or equal than comparison"""
