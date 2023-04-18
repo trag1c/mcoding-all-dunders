@@ -1,3 +1,5 @@
+from textwrap import wrap
+
 x: int
 y: list[int | float]
 
