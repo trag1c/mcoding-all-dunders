@@ -1,4 +1,4 @@
-from math import sqrt
+from math import hypot, sqrt
 from typing import Any
 
 
@@ -14,7 +14,7 @@ class Vector:
 
     @property
     def mag(self) -> float:
-        return sqrt(self.x**2 + self.y**2)
+        return hypot(self.x, self.y)
 
     @staticmethod
     def _get_mag(other: Any) -> Any:
@@ -49,8 +49,7 @@ if __name__ == "__main__":
     print(
         """Define three vectors a, b and c, such that
     |a| < |b|
-    |a| = |c|
-    |a| = √2
+    |a| = |c| = √2
     """
     )
 
