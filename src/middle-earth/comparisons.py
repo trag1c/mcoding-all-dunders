@@ -4,7 +4,7 @@ from typing import Any
 class Vector:
     """
     2D vector with an x- and a y-component.
-    Comparisons between vectors are based on their magnitude
+    Comparisons between vectors are based on their magnitude.
     """
 
     def __init__(self, x: float, y: float) -> None:
@@ -51,6 +51,7 @@ class Vector:
             return self.mag == other
 
     def __ne__(self, other: Any) -> bool:
+    """Not equal comparison"""
         return not self == other
 
 
