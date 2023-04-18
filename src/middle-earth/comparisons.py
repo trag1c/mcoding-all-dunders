@@ -1,6 +1,7 @@
 from math import sqrt
 from typing import Any
 
+
 class Vector:
     """
     2D vector with an x- and a y-component.
@@ -56,12 +57,13 @@ class Vector:
 
 
 if __name__ == "__main__":
-
-    print("""Define three vectors a, b and c, such that
+    print(
+        """Define three vectors a, b and c, such that
     |a| < |b|
     |a| = |c|
     |a| = √2
-    """)
+    """
+    )
 
     a = Vector(1, 1)
     b = Vector(2, 1)
@@ -74,31 +76,31 @@ if __name__ == "__main__":
     print(f"√2  = {sqrt(2)}")
 
     print("\nGreater or equal than")
-    print(f"a ≥ b  \t {a >= b}")       # False
-    print(f"a ≥ c  \t {a >= c}")       # True
-    print(f"a ≥ √2 \t {a >= sqrt(2)}") # True
+    print(f"a ≥ b  \t {a >= b}")  # False
+    print(f"a ≥ c  \t {a >= c}")  # True
+    print(f"a ≥ √2 \t {a >= sqrt(2)}")  # True
 
     print("\nGreater than")
-    print(f"a > b  \t {a > b}")        # False
-    print(f"a > c  \t {a > c}")        # False
+    print(f"a > b  \t {a > b}")  # False
+    print(f"a > c  \t {a > c}")  # False
     print(f"a > √2 \t {a > sqrt(2)}")  # False
 
     print("\nLess or equal than")
-    print(f"a ≤ b  \t {a <= b}")       # True
-    print(f"a ≤ c  \t {a <= c}")       # True
-    print(f"a ≤ √2 \t {a <= sqrt(2)}") # True
+    print(f"a ≤ b  \t {a <= b}")  # True
+    print(f"a ≤ c  \t {a <= c}")  # True
+    print(f"a ≤ √2 \t {a <= sqrt(2)}")  # True
 
     print("\nLess than")
-    print(f"a < b  \t {a < b}")        # True
-    print(f"a < c  \t {a < c}")        # False
+    print(f"a < b  \t {a < b}")  # True
+    print(f"a < c  \t {a < c}")  # False
     print(f"a < √2 \t {a < sqrt(2)}")  # False
 
     print("\nEqual than")
-    print(f"a = b  \t {a == b}")       # False
-    print(f"a = c  \t {a == c}")       # True
-    print(f"a = √2 \t {a == sqrt(2)}") # True
+    print(f"a = b  \t {a == b}")  # False
+    print(f"a = c  \t {a == c}")  # True
+    print(f"a = √2 \t {a == sqrt(2)}")  # True
 
     print("\nNot equal than")
-    print(f"a ≠ b  \t {a != b}")       # True
-    print(f"a ≠ c  \t {a != c}")       # False
-    print(f"a ≠ √2 \t {a != sqrt(2)}") # False
+    print(f"a ≠ b  \t {a != b}")  # True
+    print(f"a ≠ c  \t {a != c}")  # False
+    print(f"a ≠ √2 \t {a != sqrt(2)}")  # False
