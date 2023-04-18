@@ -26,10 +26,10 @@ class Appliance:
         self.switch()
 
         # Returns a message with the status
-        return self.status()
+        return self.status() + "\t(from __call__)"
     
     def __repr__(self) -> str:
-        return self.status()
+        return self.status() + "\t(from __repr__)"
 
 def main():
 
