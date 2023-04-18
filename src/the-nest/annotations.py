@@ -13,7 +13,7 @@ class Derived(Base):
 def pretty_bin(n: int, *, sep: str = " ") -> str:
     binary = f"{n:b}"
     binary = binary.zfill((len(binary) // 4 + 1) * 4)
-    return sep.join(binary[i:i+4] for i in range(0, len(binary), 4))
+    return sep.join(wrap(binary, 4))
 
 
 def main() -> None:
