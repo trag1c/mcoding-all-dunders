@@ -85,7 +85,7 @@ def main():
     print(f"The area of plot1 taken away from plot 2: {plot1 - plot3}")
 
     print(f"Positive of plot1 area +(plot1.area): {+plot1}")  # Calls __pos__
-    print(f"Negative of plot1 area (-plot1): {-plot1}")  # Calls __neg__
+    print(f"Negative of plot1 area -(plot1): {-plot1}")  # Calls __neg__
     print("Absolute value plot2 area: {abs(plot2)}")  # Calls __abs__
     print(f"plot1 area being scaled by 3: {plot1 * 3}")  # Calls __mul__
 
@@ -103,7 +103,8 @@ def main():
           f"with a remainder of {remainder} area")
 
     # Calls __mod__
-    print(f"The remainder of dividing plot1 into 22 pieces is {plot1 % 22}")
+    print(f"The remainder of dividing plot1 into 22 whole pieces is"
+          f"{plot1 % 22}")
 
     # Calls __floor__
     print(f"The area of plot3 rounded down is: {math.floor(plot3)}")
