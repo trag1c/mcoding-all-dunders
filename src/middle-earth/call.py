@@ -21,7 +21,7 @@ class Appliance:
         
     def switch(self):
         """Switch the state of the Appliance """
-        self.state = not(self.state)
+        self.state = not self.state
 
     def status(self) -> str:
         """Return a message with current status of the Appliance"""
