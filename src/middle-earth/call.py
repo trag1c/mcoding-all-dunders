@@ -39,6 +39,9 @@ class Appliance:
     
     def __repr__(self) -> str:
         return self.status() + "\t(from __repr__)"
+    
+    def __bool__(self) -> bool:
+        return self.state
 
 def main():
 
@@ -51,11 +54,12 @@ def main():
     print(f"{tv() =:} ")   # __call__
     print(f"{tv() =:} ")   # __call__
     print(f"{tv() =:} ")   # __call__
+    print(f"{bool(tv) =:}")  # __bool__
 
     print("\n*** PC ***")
     print(f"{pc =:}")      # __repr__
     print(f"{pc() =:} ")   # __call__
-
+    print(f"{bool(pc) =:}")  # __bool__
 
 if __name__ == "__main__":
     main()
