@@ -48,6 +48,7 @@ class Vector:
             return self.mag == other
 
     def __ne__(self, other: Any) -> bool:
+    """Not equal comparison"""
         return not self == other
 
 
