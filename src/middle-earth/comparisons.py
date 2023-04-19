@@ -1,4 +1,4 @@
-from math import hypot, sqrt
+from math import hypot, sqrt, isclose
 from typing import Any
 
 
@@ -38,7 +38,7 @@ class Vector:
 
     def __eq__(self, other: Any) -> bool:
         """Equal comparison"""
-        return self.mag == self._get_mag(other)
+        return isclose(self.mag, self._get_mag(other))
 
     def __ne__(self, other: Any) -> bool:
         """Not equal comparison"""
