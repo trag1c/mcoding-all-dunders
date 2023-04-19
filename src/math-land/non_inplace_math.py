@@ -1,6 +1,6 @@
 # Dunders __add__, __sub__, __pos__, __neg__,
-# __mul__, __floordiv__, __truediv__, __divmod__, __mod__, __int__
-# __complex__, __abs__, __trunc__, __pow__
+# __mul__, __floordiv__, __truediv__, __divmod__, __mod__,
+# __abs__, __trunc__, __pow__
 
 from __future__ import annotations
 import math
@@ -11,12 +11,6 @@ class Land:
 
     def __init__(self, area: int | float) -> None:
         self.area = area
-
-    def __int__(self) -> int:
-        return int(self.area)
-
-    def __float__(self) -> float:
-        return float(self.area)
 
     def __add__(self, other: Land) -> Land:
         return Land(self.area + other.area)
@@ -62,7 +56,7 @@ class Land:
         return complex(self.area, 0)
 
     def __trunc__(self) -> int:
-        return int(self)
+        return int(self.area)
 
     def __str__(self) -> str:  # For printing
         return str(self.area)
@@ -72,12 +66,6 @@ def main():
     plot1 = Land(100)
     plot2 = Land(-200)  # Owes land to the government
     plot3 = Land(5.5)
-
-    # Calls __int__ which constructs an integer
-    print(f"plot1 area as intenger: {int(plot1)}")
-
-    # Calls __float__ which constructs a float
-    print(f"plot2 area as float: {float(plot2)}")
 
     print(f"Combined area of plot1, plot2: {plot1 + plot3}")  # Calls __add__
 
@@ -111,9 +99,6 @@ def main():
 
     # calls __ceil__
     print(f"The are of plot3 rounded up is: {math.ceil(plot3)}")
-
-    # calls __complex__
-    print(f"Area of plot3 represented as a complex number {complex(plot3)}")
 
     # calls __trunc__
     print(f"The truncated integer area of plot3 {math.trunc(plot3)}")
