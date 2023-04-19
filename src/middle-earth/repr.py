@@ -2,7 +2,7 @@ class MyCoolClass:
     def __init__(self, *, value: int):
         self.value = value
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """Repr prints the python code to create this python object."""
         return f"MyCoolClass(value={self.value!r})"
 
