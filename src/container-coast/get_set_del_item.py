@@ -26,9 +26,8 @@ class Accounts:
 
 def main():
     accounts = Accounts(
-            {"user1": "data1",
-             "user2": "data2",
-             "fancyuser": "fancydata"})
+        {"user1": "data1", "user2": "data2", "fancyuser": "fancydata"}
+    )
 
     print(f"data at 'user1': {accounts['user1']}")
     print(f"data at index 0: {accounts[0]}")
