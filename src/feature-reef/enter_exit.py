@@ -18,8 +18,8 @@ class Context:
         self,
         exception_type: type[BaseException] | None,
         exception_value: BaseException | None,
-        exception_traceback: TracebackType,
-    ) -> bool:
+        exception_traceback: TracebackType | None,
+    ) -> bool | None:
         print("exiting with block")
 
         if exception_value is not None:
