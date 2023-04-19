@@ -22,10 +22,12 @@ class Context:
     ) -> bool:
         print("exiting with block")
 
-        if (exception_value is not None):
-            print(f"exception '{exception_type}' "
-                  f"occurred at line {exception_traceback.tb_lineno}: "
-                  f"{exception_value}")
+        if exception_value is not None:
+            print(
+                f"exception '{exception_type}' "
+                f"occurred at line {exception_traceback.tb_lineno}: "
+                f"{exception_value}"
+            )
 
             print("ignoring error")
 
