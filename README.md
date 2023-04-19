@@ -25,6 +25,16 @@ The file should be put in the corresponding folder inside `src`, e.g. a
 `__post_init__` example should be located in `src/library-lagoon/post_init.py`
 (see categories in the [spreadsheet]).
 
+## Credits
+
+Big thanks to everybody who contributed with code examples or code reviews:
+- [@edsaac](https://github.com/edsaac)
+- [@FuexFollets](https://github.com/FuexFollets)
+- [@Lunarmagpie](https://github.com/Lunarmagpie)
+- [@MicaelJarniac](https://github.com/MicaelJarniac)
+- [@MithicSpirit](https://github.com/MithicSpirit)
+- [@trag1c](https://github.com/trag1c)
+
 
 [Issues tab]: https://github.com/trag1c/mcoding-all-dunders/issues
 [mCoding]: https://www.youtube.com/@mCoding
