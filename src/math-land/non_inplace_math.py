@@ -82,7 +82,8 @@ def main():
 
     # Calls __floordiv__
     print(
-        f"Divisions into plots of land from plot1 of exactly 9 area: " f"{plot1 // 9}"
+        f"Divisions into plots of land from plot1 of exactly 9 area: "
+        f"{plot1 // 9}"
     )
     print(f"Divides plot2 into 5 pieces: {plot2 / 5}")  # Calls __truediv__
 
@@ -93,7 +94,10 @@ def main():
     )
 
     # Calls __mod__
-    print(f"The remainder of dividing plot1 into 22 whole pieces is" f"{plot1 % 22}")
+    print(
+        f"The remainder of dividing plot1 into 22 whole pieces is"
+        f"{plot1 % 22}"
+    )
 
     # Calls __floor__
     print(f"The area of plot3 rounded down is: {math.floor(plot3)}")
