@@ -25,6 +25,18 @@ The file should be put in the corresponding folder inside `src`, e.g. a
 `__post_init__` example should be located in `src/library-lagoon/post_init.py`
 (see categories in the [spreadsheet]).
 
+Your code must pass CI. To check if your code will pass CI locally run these commands:
+```
+pip install -r requirements.txt
+black --check .
+ruff .
+```
+You can also apply fixes if these checks don't pass:
+```
+black .
+ruff . --fix
+```
+
 ## Credits
 
 Big thanks to everybody who contributed with code examples or code reviews:
