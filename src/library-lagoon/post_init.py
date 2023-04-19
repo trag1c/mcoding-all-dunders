@@ -7,9 +7,8 @@ class Task:
     priority: int
 
     def __post_init__(self) -> None:
-        self.priority = min(
-            5, max(1, self.priority)
-        )  # clamping priority to [1, 5]
+        # clamping priority to [1, 5]
+        self.priority = min(5, max(1, self.priority))
 
 
 def main() -> None:
