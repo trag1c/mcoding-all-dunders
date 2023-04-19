@@ -29,7 +29,7 @@ Your code must pass CI. To check if your code will pass CI locally run these com
 ```
 pip install -r requirements.txt
 black --check .
-ruff .
+ruff check .
 ```
 You can also apply fixes if these checks don't pass:
 ```
