@@ -37,14 +37,16 @@ class Land:
         return Land(self.area / dividend)
 
     def __divmod__(self, divided_and_modded: int | float) -> tuple[Land, Land]:
-        return (Land(self.area // divided_and_modded),
-                Land(self.area % divided_and_modded))
+        return (
+            Land(self.area // divided_and_modded),
+            Land(self.area % divided_and_modded),
+        )
 
     def __mod__(self, modded: int | float) -> Land:
         return Land(self.area % modded)
 
     def __pow__(self, power: int | float) -> Land:
-        return Land(self.area ** power)
+        return Land(self.area**power)
 
     def __floor__(self) -> Land:
         return Land(math.floor(self.area))
@@ -82,17 +84,19 @@ def main():
     # pow(plot3, 3) also works
 
     # Calls __floordiv__
-    print(f"Divisions into plots of land from plot1 of exactly 9 area: "
-          f"{plot1 // 9}")
+    print(
+        f"Divisions into plots of land from plot1 of exactly 9 area: " f"{plot1 // 9}"
+    )
     print(f"Divides plot2 into 5 pieces: {plot2 / 5}")  # Calls __truediv__
 
     divisions, remainder = divmod(plot1, 7)  # Calls __divmod__
-    print(f"plot1 can be divided into {divisions} plots of 7 area each "
-          f"with a remainder of {remainder} area")
+    print(
+        f"plot1 can be divided into {divisions} plots of 7 area each "
+        f"with a remainder of {remainder} area"
+    )
 
     # Calls __mod__
-    print(f"The remainder of dividing plot1 into 22 whole pieces is"
-          f"{plot1 % 22}")
+    print(f"The remainder of dividing plot1 into 22 whole pieces is" f"{plot1 % 22}")
 
     # Calls __floor__
     print(f"The area of plot3 rounded down is: {math.floor(plot3)}")
