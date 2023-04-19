@@ -54,9 +54,6 @@ class Land:
     def __ceil__(self) -> Land:
         return Land(math.ceil(self.area))
 
-    def __complex__(self) -> complex:
-        return complex(self.area, 0)
-
     def __trunc__(self) -> int:
         return int(self.area)
 
