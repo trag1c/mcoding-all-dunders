@@ -34,7 +34,7 @@ ruff check .
 You can also apply fixes if these checks don't pass:
 ```
 black .
-ruff . --fix
+ruff check . --fix
 ```
 
 ## Credits
