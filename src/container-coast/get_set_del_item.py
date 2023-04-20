@@ -4,8 +4,8 @@ from __future__ import annotations
 
 
 class LunchBoxes:
-    def __init__(self, items: dict[str, list[str]]) -> None:
-        self.user_items = items
+    def __init__(self, **names_to_items: list[str]) -> None:
+        self.user_items = names_to_items
 
     def __getitem__(self, name_or_index: str | int) -> str | tuple[str, str]:
         """Returns the value of a key or a pair at index when the dict is sorted"""
@@ -24,11 +24,9 @@ class LunchBoxes:
 
 def main():
     lunchboxes = LunchBoxes(
-        {
-            "alice": ["apple", "carrot", "rice"],
-            "bob": ["asparagus", "lemon", "fish"],
-            "carol": ["chocolate", "milk", "bread"],
-        }
+        alice=["apple", "carrot", "rice"],
+        bob=["asparagus", "lemon", "fish"],
+        carol=["chocolate", "milk", "bread"],
     )
 
     print(f"Carol's lunch box: {lunchboxes['carol']}")  # A call to __getitem__
