@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from types import TracebackType
+
 
 class Context:
     def fancy_function(self) -> None:
@@ -13,14 +15,19 @@ class Context:
         return self
 
     def __exit__(
-            self, exception_type, exception_value,
-            exception_traceback) -> bool:
+        self,
+        exception_type: type[BaseException] | None,
+        exception_value: BaseException | None,
+        exception_traceback: TracebackType,
+    ) -> bool:
         print("exiting with block")
 
-        if (exception_value is not None):
-            print(f"exception '{exception_type}' "
-                  f"occurred at line {exception_traceback.tb_lineno}: "
-                  f"{exception_value}")
+        if exception_value is not None:
+            print(
+                f"exception '{exception_type}' "
+                f"occurred at line {exception_traceback.tb_lineno}: "
+                f"{exception_value}"
+            )
 
             print("ignoring error")
 

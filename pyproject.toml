@@ -1,0 +1,11 @@
+[tool.black]
+line-length=80
+
+[tool.ruff]
+select = [
+  # Pyflakes
+  "E",
+  "F",
+  # Isort
+  "I",
+]
