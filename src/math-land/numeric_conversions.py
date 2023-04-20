@@ -28,6 +28,7 @@ class Char:
 def main() -> None:
     c = Char("m")
     print(f"{c}Coding")  # mCoding
+    # fmt: off
     print(
         int(c),     # 109
         float(c),   # 109.0
@@ -38,6 +39,7 @@ def main() -> None:
         oct(c),  # 0o155
         hex(c)   # 0x6d
     )
+    # fmt: on
     print(range(128)[c])  # 109, __index__ used again
     # range(x)[c] == int(c)  when  x < c < 0x110000
 
