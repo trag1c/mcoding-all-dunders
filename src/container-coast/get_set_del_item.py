@@ -36,7 +36,7 @@ def main():
 
     del accounts["user1"]  # A call to __delitem__
 
-    print(f"Currenet account data: {accounts.account_data}")
+    print(f"Current account data: {accounts.account_data}")
 
 
 if __name__ == "__main__":
