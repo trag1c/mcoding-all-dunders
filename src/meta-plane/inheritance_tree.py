@@ -63,5 +63,5 @@ def main():
     print(f"Classes that derive from Oxygen: {Oxygen.__subclasses__() = }")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
