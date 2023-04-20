@@ -14,7 +14,7 @@ class Circle:
 
     @property
     def area(self) -> float:
-        return math.pi * self.radius ** 2
+        return math.pi * self.radius**2
 
     @classmethod
     def from_area(cls, area: float) -> Self:
