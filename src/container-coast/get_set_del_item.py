@@ -3,40 +3,49 @@
 from __future__ import annotations
 
 
-class Accounts:
-    account_data: dict[str, str] = {}
+class LunchBoxes:
+    def __init__(self, items: dict[str, list[str]]) -> None:
+        self.user_items = items
 
-    def __init__(self, account_data: dict[str, str]) -> None:
-        self.account_data = account_data
-
-    def __getitem__(self, key: str | int) -> str | tuple[str, str]:
+    def __getitem__(self, name_or_index: str | int) -> str | tuple[str, str]:
         """Returns the value of a key or a pair at index when the dict is sorted"""
 
-        if isinstance(key, int):
-            return sorted(self.account_data.items())[key]
+        if isinstance(name_or_index, int):
+            return sorted(self.user_items.items())[name_or_index]
 
-        return self.account_data[key]
+        return self.user_items[name_or_index]
 
-    def __setitem__(self, key: str, value: str) -> None:
-        self.account_data[key] = value
+    def __setitem__(self, name: str, new_items: str) -> None:
+        self.user_items[name] = new_items
 
-    def __delitem__(self, key: str) -> None:
-        del self.account_data[key]
+    def __delitem__(self, name: str) -> None:
+        del self.user_items[name]
 
 
 def main():
-    accounts = Accounts(
-        {"user1": "data1", "user2": "data2", "fancyuser": "fancydata"}
+    lunchboxes = LunchBoxes(
+        {
+            "alice": ["apple", "carrot", "rice"],
+            "bob": ["asparagus", "lemon", "fish"],
+            "carol": ["chocolate", "milk", "bread"],
+        }
     )
 
-    print(f"data at 'user1': {accounts['user1']}")
-    print(f"data at index 0: {accounts[0]}")
+    print(f"Carol's lunch box: {lunchboxes['carol']}")  # A call to __getitem__
+    print(f"Bob's lunch box: {lunchboxes['bob']}")  # A call to __getitem__
 
-    accounts["user2"] = "newdata"  # A call to __setitem__
+    lunchboxes["alice"] = [
+        "apple",
+        "carrot",
+        "rice",
+        "chocolate",
+    ]  # A call to __setitem__
 
-    del accounts["user1"]  # A call to __delitem__
+    print(f"Alice's new lunchbox {lunchboxes['alice']}")
 
-    print(f"Current account data: {accounts.account_data}")
+    del lunchboxes["carol"]  # A call to __delitem__
+
+    print(f"Current lunchboxes data: {lunchboxes.user_items}")
 
 
 if __name__ == "__main__":
