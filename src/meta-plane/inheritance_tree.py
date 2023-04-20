@@ -1,6 +1,7 @@
-# Dunders __base__, __bases__, __subclasses__, __mro__
+# Dunders __base__, __bases__, __subclasses__
 
-# Maybe not __mro_entries__
+
+from __future__ import annotations
 
 
 class Carbon:
@@ -23,23 +24,22 @@ class CarbonDioxide(Carbon, Oxygen):
     ...
 
 
-class HydrogenPeroxide(Water):
-    ...
-
-
 class Glucose(CarbonDioxide, Water):
     ...
 
 
-class MysteryChemical(Glucose, HydrogenPeroxide):
+# Inheritance tree
+#
+#          Glucose
+#         /       \
+# CarbonDioxide   Water
+#       /   \     /   \
+#    Carbon  Oxygen  Hydrogen
+
+
+def main():
     ...
 
 
-# Inheritance tree
-#           MysteryChemical
-#           /             \
-#           Glucose       HydrogenPeroxide
-#           /     \       /
-# CarbonDioxide     Water
-#       /   \       /   \
-#  Carbon    Oxygen      Hydrogen
+if __name__ == '__main__':
+    main()
