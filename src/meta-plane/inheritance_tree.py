@@ -56,8 +56,8 @@ def main():
     # and the first in the inheritance list
     print(f"Water first derives from {Water.__base__ = }")
 
-    # __base__ also determines which method is called
-    # if two methods have the same nade
+    # The MRO (method resolution order) is decided by checking the
+    # `__bases__` array from left to right.
 
     print(f"Water first derives from {Water().get_atom() = }")
     print(f"Classes that derive from Oxygen: {Oxygen.__subclasses__() = }")
