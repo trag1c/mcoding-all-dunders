@@ -1,4 +1,4 @@
-from math import hypot, sqrt, isclose
+from math import hypot, isclose, sqrt
 from typing import Any
 
 
