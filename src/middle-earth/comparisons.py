@@ -2,10 +2,10 @@ from math import hypot, sqrt, isclose
 from typing import Any
 
 
-class Vector:
+class Force:
     """
-    2D vector with an x- and a y-component.
-    Comparisons between vectors are based on their magnitude.
+    2D force with an x- and a y-component.
+    Comparisons between forces are based on their magnitude.
     """
 
     def __init__(self, x: float, y: float) -> None:
@@ -18,7 +18,7 @@ class Vector:
 
     @staticmethod
     def _get_mag(other: Any) -> Any:
-        return other.mag if isinstance(other, Vector) else other
+        return other.mag if isinstance(other, Force) else other
 
     def __ge__(self, other: Any) -> bool:
         """Greater or equal than comparison"""
@@ -47,15 +47,16 @@ class Vector:
 
 if __name__ == "__main__":
     print(
-        """Define three vectors a, b and c, such that
+        """Define three forces (a, b and c), such that
+
     |a| < |b|
     |a| = |c| = √2
     """
     )
 
-    a = Vector(1, 1)
-    b = Vector(2, 1)
-    c = Vector(-1, -1)
+    a = Force(1, 1)
+    b = Force(0, -9)
+    c = Force(-1, -1)
 
     print("\nPrint their magnitudes")
     print(f"|a| = {a.mag:.5f}")
