@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from types import TracebackType
+from typing import Any
 
 
 class Context:
@@ -18,8 +19,8 @@ class Context:
         self,
         exception_type: type[BaseException] | None,
         exception_value: BaseException | None,
-        exception_traceback: TracebackType,
-    ) -> bool:
+        exception_traceback: TracebackType | None,
+    ) -> Any:
         print("exiting with block")
 
         if exception_value is not None:
