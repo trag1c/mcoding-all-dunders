@@ -16,33 +16,33 @@ class Force:
     def mag(self) -> float:
         return hypot(self.x, self.y)
 
-    @staticmethod
-    def _get_mag(other: Any) -> Any:
-        return other.mag if isinstance(other, Force) else other
-
     def __ge__(self, other: Any) -> bool:
         """Greater or equal than comparison"""
-        return self.mag >= self._get_mag(other)
+        return self.mag >= abs(other)
 
     def __gt__(self, other: Any) -> bool:
         """Greater than comparison"""
-        return self.mag > self._get_mag(other)
+        return self.mag > abs(other)
 
     def __le__(self, other: Any) -> bool:
         """Less or equal than comparison"""
-        return self.mag <= self._get_mag(other)
+        return self.mag <= abs(other)
 
     def __lt__(self, other: Any) -> bool:
         """Less than comparison"""
-        return self.mag < self._get_mag(other)
+        return self.mag < abs(other)
 
     def __eq__(self, other: Any) -> bool:
         """Equal comparison"""
-        return isclose(self.mag, self._get_mag(other))
+        return isclose(self.mag, abs(other))
 
     def __ne__(self, other: Any) -> bool:
         """Not equal comparison"""
-        return not self == self._get_mag(other)
+        return not self == abs(other)
+
+    def __abs__(self) -> float:
+        """Absolute value defined as the magnitude"""
+        return self.mag
 
 
 if __name__ == "__main__":
