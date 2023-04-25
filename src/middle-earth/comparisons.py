@@ -38,7 +38,7 @@ class Force:
 
     def __ne__(self, other: Any) -> bool:
         """Not equal comparison"""
-        return not self == abs(other)
+        return not self == other
 
     def __abs__(self) -> float:
         """Absolute value defined as the magnitude"""
