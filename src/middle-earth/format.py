@@ -20,27 +20,27 @@ def main():
     float_num = 0.15625
     binfloat = BinarizableFloat(0.15625)
 
-    print("-> An integer has a binary representation")
-    print(f"{integer=} is {type(integer)}. In binary {integer=:b}")
+    print("\n-> Integers have a format specification for binary")
+    print(f"{integer=} is {type(integer)}.\nIn binary, {integer=:b}")
 
     print("\n-> But a float does not")
     try:
         print(f"{float_num:b}")
 
     except ValueError:
-        print(
-            f"{float_num=} is {type(float_num)}. No binary :("
-        )
+        print(f"{float_num=} is {type(float_num)}.\nNo binary :(")
 
     print(
         "\n-> BinarizableFloat returns a 32bit binary representation",
         "following the IEEE 754 standard",
     )
 
-    print(f"{binfloat=} is {type(binfloat)} and in binary it is {binfloat:b}")
+    print(f"{binfloat=} is {type(binfloat)}.\nIn binary, {binfloat=:b}")
 
     print("\n-> BinarizableFloat can do math with the standard float")
-    print(f"{binfloat * float_num = }")
+    print(f"{binfloat + float_num  =: .6f}")
+    print(f"{binfloat * float_num  =: .6f}")
+    print(f"{binfloat ** float_num =: .6f}")
 
 
 if __name__ == "__main__":
