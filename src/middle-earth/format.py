@@ -1,5 +1,6 @@
+from math import isinf
 from struct import pack
-from math import isnan, isinf
+
 
 class BinarizableFloat(float):
     def __new__(cls, val, *args, **kwargs):
@@ -7,14 +8,14 @@ class BinarizableFloat(float):
 
     def __format__(self, __format_spec: str) -> str:
         """If the format specification is 'b', the IEEE 754 binary32
-        representation is returned as a string of zeros and ones. 
-        
+        representation is returned as a string of zeros and ones.
+
         The bytes are retrieved from struct.pack() assuming a float for C Type.
         Check https://docs.python.org/3/library/struct.html#format-characters
         for more details.
 
-        - Byte order is fixed to little-endian. 
-        - OverflowError is raised 
+        - Byte order is fixed to little-endian.
+        - OverflowError is raised
         """
 
         if __format_spec == "b":
@@ -31,7 +32,7 @@ class BinarizableFloat(float):
 
 
 def main():
-    
+
     integer = 32
     float_num = 0.15625
     binfloat = BinarizableFloat(0.15625)
@@ -85,12 +86,12 @@ def run_tests():
     assert f"{num:b}" == "01111111100000000000000000000000"
 
     # Overflow
-    num = BinarizableFloat(float(8.0E+38))
+    num = BinarizableFloat(float(8.0e38))
     try:
         print(f"{num:b}")
     except OverflowError:
         ...
-    
+
+
 if __name__ == "__main__":
     main()
-    
