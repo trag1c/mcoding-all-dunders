@@ -4,7 +4,7 @@ from typing import Any
 
 
 class Awaitable:
-    def __await__(self) -> Generator[Any, Any, str]:
+    def __await__(self) -> Generator[None, None, str]:
         """
         This method is called when you `await` an object. A `TypeError`
         is raised if this method doesn't return an iterator.
@@ -17,4 +17,5 @@ async def async_main():
     print(await Awaitable())
 
 
-asyncio.new_event_loop().run_until_complete(async_main())
+if __name__ == "__main__":
+    asyncio.new_event_loop().run_until_complete(async_main())
