@@ -1,3 +1,4 @@
+import unittest
 from math import isinf
 from struct import pack
 
@@ -31,6 +32,32 @@ class BinarizableFloat(float):
             return super().__format__(__format_spec)
 
 
+class BinarizableFloatTests(unittest.TestCase):
+    def test_positive_float(self):
+        num = BinarizableFloat(4.20)
+        self.assertEqual(f"{num:b}", "01000000100001100110011001100110")
+
+    def test_negative_float(self):
+        num = BinarizableFloat(-6.9)
+        self.assertEqual(f"{num:b}", "11000000110111001100110011001101")
+
+    def test_zeroes(self):
+        num = BinarizableFloat(0)
+        self.assertEqual(f"{num:b}", "00000000000000000000000000000000")
+
+        num = BinarizableFloat(-0.0)
+        self.assertEqual(f"{num:b}", "10000000000000000000000000000000")
+
+    def test_infty(self):
+        num = BinarizableFloat(float("inf"))
+        self.assertTrue(isinf(num))
+        self.assertEqual(f"{num:b}", "01111111100000000000000000000000")
+
+    def test_overflow(self):
+        BinarizableFloat(float(8.0e38))
+        self.assertRaises(OverflowError)
+
+
 def main():
     integer = 32
     float_num = 0.15625
@@ -57,39 +84,8 @@ def main():
     print(f"{binfloat * float_num  =: .6f}")
     print(f"{binfloat ** float_num =: .6f}")
 
-    run_tests()
-
-
-def run_tests():
-    """Run some checks for various floats"""
-
-    # Positive float
-    num = BinarizableFloat(4.20)
-    assert f"{num:b}" == "01000000100001100110011001100110"
-
-    # Negative float
-    num = BinarizableFloat(-6.9)
-    assert f"{num:b}" == "11000000110111001100110011001101"
-
-    # Zero
-    num = BinarizableFloat(0)
-    assert f"{num:b}" == "00000000000000000000000000000000"
-
-    # Negative zero
-    num = BinarizableFloat(-0.0)
-    assert f"{num:b}" == "10000000000000000000000000000000"
-
-    # Infinite
-    num = BinarizableFloat(float("inf"))
-    assert isinf(num)
-    assert f"{num:b}" == "01111111100000000000000000000000"
-
-    # Overflow
-    num = BinarizableFloat(float(8.0e38))
-    try:
-        print(f"{num:b}")
-    except OverflowError:
-        ...
+    ## Unit tests
+    unittest.main()
 
 
 if __name__ == "__main__":
