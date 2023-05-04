@@ -14,8 +14,8 @@ class BinarizableFloat(float):
         Check https://docs.python.org/3/library/struct.html#format-characters
         for more details.
 
+        Notes:
         - Byte order is fixed to little-endian.
-        - OverflowError is raised
         """
 
         if __format_spec == "b":
