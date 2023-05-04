@@ -32,7 +32,6 @@ class BinarizableFloat(float):
 
 
 def main():
-
     integer = 32
     float_num = 0.15625
     binfloat = BinarizableFloat(0.15625)
