@@ -85,7 +85,8 @@ def main():
     print(f"{binfloat ** float_num =: .6f}")
 
     ## Unit tests
-    unittest.main()
+    print("\n=== Unit tests ===")
+    unittest.main(verbosity=2)
 
 
 if __name__ == "__main__":
