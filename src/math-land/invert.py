@@ -70,7 +70,7 @@ class RGBColor:
 
     def __invert__(self):
         """Calculate the inverse of each PrimaryColor and returns a new
-        RBGColor
+        RGBColor
 
         >>> pink = RGBColor(255, 192, 203)
         >>> antipink = ~pink
