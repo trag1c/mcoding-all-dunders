@@ -8,8 +8,6 @@ import math
 
 
 class NumberWrapper:
-    value: int | float = 0
-
     def __init__(self, value: int | float) -> None:
         self.value = value
 
