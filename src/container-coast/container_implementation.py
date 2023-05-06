@@ -33,11 +33,11 @@ class BinaryTree:
             self.key = key
             self.value = value
 
-        if (key < self.key):
+        if key < self.key:
             self.left = BinaryTree() if self.left is None else self.left
             self.left[key] = value
 
-        if (self.key < key):
+        if self.key < key:
             self.right = BinaryTree() if self.right is None else self.right
             self.right[key] = value
 
@@ -63,7 +63,11 @@ class BinaryTree:
         if self.key is None:
             return 0
 
-        return 1 + (len(self.left) if self.left is not None else 0) + (len(self.right) if self.right is not None else 0)
+        return (
+            1
+            + (len(self.left) if self.left is not None else 0)
+            + (len(self.right) if self.right is not None else 0)
+        )
 
     def __iter__(self):
         if self.left is not None:
