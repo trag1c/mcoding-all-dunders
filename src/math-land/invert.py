@@ -86,11 +86,11 @@ class RGBColor:
 def main():
     print("==== Inverted colors===")
     red = RGBColor(255, 0, 0)
-    print(f"{red=:}, ", f"{~red=:} is cyan!")
+    print(f"{red=:}, {~red=:} is cyan!")
 
     orange = RGBColor(255, 165, 0)
     antiorange = ~orange
-    print(f"{orange=:}, ", f"{antiorange=:}")
+    print(f"{orange=:}, {antiorange=:}")
 
 
 if __name__ == "__main__":
