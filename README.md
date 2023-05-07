@@ -45,6 +45,7 @@ Big thanks to everybody who contributed with code examples or code reviews:
 - [@Lunarmagpie](https://github.com/Lunarmagpie)
 - [@MicaelJarniac](https://github.com/MicaelJarniac)
 - [@MithicSpirit](https://github.com/MithicSpirit)
+- [@qexat](https://github.com/qexat)
 - [@trag1c](https://github.com/trag1c)
 
 
