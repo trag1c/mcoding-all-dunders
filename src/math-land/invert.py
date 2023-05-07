@@ -17,7 +17,7 @@ class PrimaryColor:
         self.value = value
         self.check_valid()
 
-    def __invert__(self):
+    def __invert__(self) -> "PrimaryColor":
         """
         Returns the inverse of the color as the complement to 255
 
@@ -26,7 +26,7 @@ class PrimaryColor:
         """
         return PrimaryColor(255 - self.value)
 
-    def check_valid(self):
+    def check_valid(self) -> None:
         """
         Check if the PrimaryColor has a valid value
 
@@ -48,7 +48,7 @@ class PrimaryColor:
             raise ValueError("Color value is not between 0 and 255")
 
     def __str__(self) -> str:
-        return f"{self.value}"
+        return str(self.value)
 
 
 class RGBColor:
@@ -68,7 +68,7 @@ class RGBColor:
         self.g = PrimaryColor(g) if isinstance(g, int) else g
         self.b = PrimaryColor(b) if isinstance(b, int) else b
 
-    def __invert__(self):
+    def __invert__(self) -> "RGBColor":
         """Calculate the inverse of each PrimaryColor and returns a new
         RGBColor
 
