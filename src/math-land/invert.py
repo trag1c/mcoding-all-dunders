@@ -14,21 +14,8 @@ class PrimaryColor:
     __slots__ = "value"
 
     def __init__(self, value: int) -> None:
-        self.value = value
-        self.check_valid()
-
-    def __invert__(self) -> "PrimaryColor":
         """
-        Returns the inverse of the color as the complement to 255
-
-        >>> print(~PrimaryColor(100))
-        155
-        """
-        return PrimaryColor(255 - self.value)
-
-    def check_valid(self) -> None:
-        """
-        Check if the PrimaryColor has a valid value
+        Inititalize and check if the PrimaryColor has a valid value
 
         >>> PrimaryColor(230.5)
         Traceback (most recent call last):
@@ -40,12 +27,22 @@ class PrimaryColor:
             ...
         ValueError: Color value is not between 0 and 255
         """
+        self.value = value
 
         if not isinstance(self.value, int):
             raise TypeError("Color value must be an int")
 
         if not 0 <= self.value <= 255:
             raise ValueError("Color value is not between 0 and 255")
+
+    def __invert__(self) -> "PrimaryColor":
+        """
+        Returns the inverse of the color as the complement to 255
+
+        >>> print(~PrimaryColor(100))
+        155
+        """
+        return PrimaryColor(255 - self.value)
 
     def __str__(self) -> str:
         return str(self.value)
