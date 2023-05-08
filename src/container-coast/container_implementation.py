@@ -99,6 +99,17 @@ class ListWrapper:
         return len(self.value)
 
 
+class RangeIterator:
+    def __init__(self, start, step):
+        self.current = start
+        self.step = step
+
+    def __next__(self):
+        current_value = self.current
+        self.current += self.step
+        return current_value
+
+
 def main():
     tree = BinaryTree()
 
@@ -135,6 +146,11 @@ def main():
     print(*lw)
 
     print(*reversed(lw))
+
+    r = RangeIterator(0, 3)
+    print(f"First call to range iterator: {next(r) = }")  # Calls __next__
+    print(f"Second call to range iteraotr: {next(r) = }")
+    print(f"Third call to range iteraotr: {next(r) = }")
 
 
 if __name__ == "__main__":
