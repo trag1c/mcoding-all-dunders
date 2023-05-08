@@ -132,11 +132,9 @@ def main():
     lw = ListWrapper([1, 2, 3, 4, 5])
 
     # Still works even without __iter__, uses __getitem__ and __len__
-    for number in lw:
-        print(number, end=" ")
+    print(*lw)
 
-    for number in reversed(lw):
-        print(number, end=" ")
+    print(*reversed(lw))
 
 
 if __name__ == "__main__":
