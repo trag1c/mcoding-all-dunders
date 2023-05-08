@@ -89,8 +89,8 @@ class BinaryTree:
 
 
 class ListWrapper:
-    def __init__(self, value=[]):
-        self.value = value
+    def __init__(self, value=None):
+        self.value = value or []
 
     def __getitem__(self, index):
         return self.value[index]
