@@ -63,7 +63,12 @@ class RGBColor:
 
     __slots__ = "r", "g", "b"
 
-    def __init__(self, r: int, g: int, b: int) -> None:
+    def __init__(
+        self,
+        r: int | PrimaryColor,
+        g: int | PrimaryColor,
+        b: int | PrimaryColor,
+    ) -> None:
         self.r = PrimaryColor(r) if isinstance(r, int) else r
         self.g = PrimaryColor(g) if isinstance(g, int) else g
         self.b = PrimaryColor(b) if isinstance(b, int) else b
