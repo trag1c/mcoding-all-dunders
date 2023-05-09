@@ -1,3 +1,6 @@
+from typing import Self
+
+
 class PrimaryColor:
     """Base class for each primary color in the RGB space
 
@@ -35,7 +38,7 @@ class PrimaryColor:
         if not 0 <= self.value <= 255:
             raise ValueError("Color value is not between 0 and 255")
 
-    def __invert__(self) -> "PrimaryColor":
+    def __invert__(self) -> Self:
         """
         Returns the inverse of the color as the complement to 255
 
@@ -65,7 +68,7 @@ class RGBColor:
         self.g = PrimaryColor(g) if isinstance(g, int) else g
         self.b = PrimaryColor(b) if isinstance(b, int) else b
 
-    def __invert__(self) -> "RGBColor":
+    def __invert__(self) -> Self:
         """Calculate the inverse of each PrimaryColor and returns a new
         RGBColor
 
