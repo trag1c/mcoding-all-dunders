@@ -1,9 +1,42 @@
-import unittest
-from math import isinf
 from struct import pack
 
 
 class BinarizableFloat(float):
+    """
+    Class that inherits from float and implements a format specification
+    for printing it in binary.
+
+    >>> positive_float = BinarizableFloat(4.20)
+    >>> print(f"{positive_float:b}")
+    01000000100001100110011001100110
+
+    >>> negative_float = BinarizableFloat(-6.9)
+    >>> print(f"{negative_float:b}")
+    11000000110111001100110011001101
+
+    >>> positive_zero = BinarizableFloat(0)
+    >>> print(f"{positive_zero:b}")
+    00000000000000000000000000000000
+
+    >>> negative_zero = BinarizableFloat(-0.0)
+    >>> print(f"{negative_zero:b}")
+    10000000000000000000000000000000
+
+    >>> from math import isinf
+    >>> infinity = BinarizableFloat(float("inf"))
+    >>> print(isinf(infinity))
+    True
+
+    >>> print(f"{infinity:b}")
+    01111111100000000000000000000000
+
+    >>> overflowed_float =  BinarizableFloat(float(8.0e38))
+    >>> print(f"{overflowed_float:b}")
+    Traceback (most recent call last):
+    ...
+    OverflowError: float too large to pack with f format
+    """
+
     def __new__(cls, val, *args, **kwargs):
         return super(BinarizableFloat, cls).__new__(cls, val)
 
@@ -32,62 +65,39 @@ class BinarizableFloat(float):
             return super().__format__(__format_spec)
 
 
-class BinarizableFloatTests(unittest.TestCase):
-    def test_positive_float(self):
-        num = BinarizableFloat(4.20)
-        self.assertEqual(f"{num:b}", "01000000100001100110011001100110")
-
-    def test_negative_float(self):
-        num = BinarizableFloat(-6.9)
-        self.assertEqual(f"{num:b}", "11000000110111001100110011001101")
-
-    def test_zeroes(self):
-        num = BinarizableFloat(0)
-        self.assertEqual(f"{num:b}", "00000000000000000000000000000000")
-
-        num = BinarizableFloat(-0.0)
-        self.assertEqual(f"{num:b}", "10000000000000000000000000000000")
-
-    def test_infty(self):
-        num = BinarizableFloat(float("inf"))
-        self.assertTrue(isinf(num))
-        self.assertEqual(f"{num:b}", "01111111100000000000000000000000")
-
-    def test_overflow(self):
-        BinarizableFloat(float(8.0e38))
-        self.assertRaises(OverflowError)
-
-
 def main():
     integer = 32
     float_num = 0.15625
-    binfloat = BinarizableFloat(0.15625)
+    binfloat = BinarizableFloat(float_num)
 
-    print("\n-> Integers have a format specification for binary")
-    print(f"{integer=} is {type(integer)}.\nIn binary, {integer=:b}")
+    print("-> Integers have a format specification for binary")
+    print(f"{integer=} is {type(integer).__name__}.\nIn binary, {integer=:b}")
 
     print("\n-> But a float does not")
     try:
         print(f"{float_num:b}")
 
     except ValueError:
-        print(f"{float_num=} is {type(float_num)}.\nNo binary :(")
+        print(f"{float_num=} is {type(float_num).__name__}.\nNo binary :(")
 
     print(
-        "\n-> BinarizableFloat returns a 32bit binary representation",
+        "\n-> BinarizableFloat returns a 32-bit binary representation",
         "following the IEEE 754 standard",
     )
-    print(f"{binfloat=} is {type(binfloat)}.\nIn binary, {binfloat=:b}")
+    print(
+        f"{binfloat=} is {type(binfloat).__name__}.",
+        f"\nIn binary, {binfloat=:b}",
+    )
 
     print("\n-> BinarizableFloat can do math with the standard float")
     print(f"{binfloat + float_num  =: .6f}")
     print(f"{binfloat * float_num  =: .6f}")
     print(f"{binfloat ** float_num =: .6f}")
 
-    ## Unit tests
-    print("\n=== Unit tests ===")
-    unittest.main(verbosity=2)
-
 
 if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
+
     main()
