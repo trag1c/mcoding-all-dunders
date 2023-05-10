@@ -30,13 +30,13 @@ class PrimaryColor:
             ...
         ValueError: Color value is not between 0 and 255
         """
-        self.value = value
-
-        if not isinstance(self.value, int):
+        if not isinstance(value, int):
             raise TypeError("Color value must be an int")
 
-        if not 0 <= self.value <= 255:
+        if not 0 <= value <= 255:
             raise ValueError("Color value is not between 0 and 255")
+
+        self.value = value
 
     def __invert__(self) -> Self:
         """
