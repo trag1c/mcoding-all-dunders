@@ -100,13 +100,22 @@ class ListWrapper:
 
 
 class RangeIterator:
-    def __init__(self, start, step):
+    def __init__(self, start, step, stop):
         self.current = start
         self.step = step
+        self.stop = stop
+
+    def __iter__(self):
+        return self
 
     def __next__(self):
         current_value = self.current
+
         self.current += self.step
+
+        if self.current > self.stop:
+            raise StopIteration
+
         return current_value
 
 
@@ -143,14 +152,20 @@ def main():
     lw = ListWrapper([1, 2, 3, 4, 5])
 
     # Still works even without __iter__, uses __getitem__ and __len__
-    print(*lw)
+    print("Values of list wrapper: ", *lw)
 
-    print(*reversed(lw))
+    print("Values of list wrapper reversed: ", *reversed(lw))
 
-    r = RangeIterator(0, 3)
+    r = RangeIterator(0, 1, 4)
     print(f"First call to range iterator: {next(r) = }")  # Calls __next__
     print(f"Second call to range iteraotr: {next(r) = }")
     print(f"Third call to range iteraotr: {next(r) = }")
+
+    range_0_to_10 = RangeIterator(0, 1, 10)
+
+    # Stops before 10 since StopIteration is raised
+    for value in range_0_to_10:
+        print(value)
 
 
 if __name__ == "__main__":
