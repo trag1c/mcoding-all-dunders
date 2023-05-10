@@ -12,9 +12,9 @@ class Awaitable:
         return "Hello world!"
 
 
-async def async_main():
+async def main():
     print(await Awaitable())
 
 
 if __name__ == "__main__":
-    asyncio.new_event_loop().run_until_complete(async_main())
+    asyncio.run(main())
