@@ -10,6 +10,7 @@ examples for. When you're done, simply make a PR!
 ### Submission guidelines
 * The code has to be [PEP8]-compliant and lines must be at most 80 chars long
 * Typehints are not necessary (unless needed for the example to work)
+* Be consistent about type hints: either do them properly or don't include them at all
 * Examples can include multiple dunders if they go together
 * The code should be a minimal working example that uses the dunder(s)
 
