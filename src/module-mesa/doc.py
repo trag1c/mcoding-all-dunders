@@ -32,6 +32,7 @@ def main() -> None:
     print("Circle docstring:", Circle.__doc__)
     print("Circle.from_area docstring:", Circle.from_area.__doc__)
     print("abs docstring:", abs.__doc__)
+    help(Circle.from_area)  # in the REPL
 
 
 if __name__ == "__main__":
