@@ -1,5 +1,4 @@
 """Adds locals to breaks?"""
-import contextlib
 import linecache
 import reprlib
 import sys
@@ -9,21 +8,20 @@ from pprint import pformat
 from textwrap import indent
 
 
-class PdbLocals(Pdb):
-    @staticmethod
-    def _short_path(filename) -> Path:
-        """
-        Returns a relative path to the frame file if possible or an absolute path
-        """
-        try:
-            return Path(filename).resolve().relative_to(Path.cwd())
-        except ValueError:
-            return Path(filename).resolve()
+def _short_path(filename) -> Path:
+    try:
+        return Path(filename).resolve().relative_to(Path.cwd())
+    except ValueError:
+        return Path(filename).resolve()
 
+
+class PdbLocals(Pdb):
+    """Pdb... with locals (and some minor formatting)"""
     def format_stack_entry(self, frame_lineno, lprefix=': '):
         frame, lineno = frame_lineno
+        
         name = frame.f_code.co_name if frame.f_code.co_name else "<lambda>"
-        filename = PdbLocals._short_path(frame.f_code.co_filename)
+        filename = _short_path(frame.f_code.co_filename)
         lines = [f"File \"{filename}\" line {lineno} in {name}", ""]
 
         if lineno is not None:
@@ -48,10 +46,11 @@ def set_trace(*, header=None):
     pdb.set_trace(sys._getframe().f_back)
 
 
-@contextlib.contextmanager
-def locals_debugger():
+def debug_with_locals():
     sys.breakpointhook = set_trace
-    yield
+
+
+def reset_debug():
     sys.breakpointhook = sys.__breakpointhook__
 
 
@@ -62,11 +61,11 @@ def foo(x, y):
 
 
 def main():
-    with locals_debugger():
-        breakpoint()
-        result = foo(1, 1)
-        print(result)
+    breakpoint()
+    result = foo(1, 1)
+    print(result)
 
 
 if __name__ == "__main__":
+    debug_with_locals()
     main()
