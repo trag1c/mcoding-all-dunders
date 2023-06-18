@@ -17,12 +17,13 @@ def _short_path(filename) -> Path:
 
 class PdbLocals(Pdb):
     """Pdb... with locals (and some minor formatting)"""
-    def format_stack_entry(self, frame_lineno, lprefix=': '):
+
+    def format_stack_entry(self, frame_lineno, lprefix=": "):
         frame, lineno = frame_lineno
-        
+
         name = frame.f_code.co_name if frame.f_code.co_name else "<lambda>"
         filename = _short_path(frame.f_code.co_filename)
-        lines = [f"File \"{filename}\" line {lineno} in {name}", ""]
+        lines = [f'File "{filename}" line {lineno} in {name}', ""]
 
         if lineno is not None:
             path = self.canonic(frame.f_code.co_filename)
@@ -31,8 +32,8 @@ class PdbLocals(Pdb):
 
         lines += [f"Locals: {pformat(self.curframe_locals)}"]
 
-        if '__return__' in frame.f_locals:
-            rv = frame.f_locals['__return__']
+        if "__return__" in frame.f_locals:
+            rv = frame.f_locals["__return__"]
             lines += ["Returning -> " + reprlib.repr(rv)]
         lines += [""]
 

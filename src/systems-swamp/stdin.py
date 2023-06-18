@@ -32,10 +32,7 @@ menu = """
 6) spam sausage spam spam bacon spam tomato and spam
 """.strip()
 
-stdin = StringIO("""
-Have you got anything without spam?
-1
-""".lstrip())
+stdin = StringIO("Have you got anything without spam?\n1\n")
 
 with redirect_stdin(stdin):
     print("We've got:")
