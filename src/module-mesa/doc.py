@@ -8,6 +8,7 @@ class Circle:
 
     def __init__(self, radius: float) -> None:
         self.radius = radius
+        """The radius of the circle."""  # not obtainable, but supported by IDEs
 
     def __repr__(self) -> str:
         return f"Circle(radius={self.radius})"
