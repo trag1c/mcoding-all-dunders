@@ -1,4 +1,8 @@
-"""This module contains a Circle class!"""
+"""
+This module demonstrates the __doc__ dunder attribute/variable.
+
+The module contains a Circle class and some __doc__ usage examples.
+"""
 import math
 from typing import Self
 
