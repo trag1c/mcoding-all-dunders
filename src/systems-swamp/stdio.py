@@ -1,4 +1,3 @@
-"""Note: for stdout and stderr use contextlib.redirect_{stderr|stdout}"""
 import builtins
 import contextlib
 import sys
@@ -30,6 +29,7 @@ def redirect_stdin(target: TextIO, write_to_stdout: bool = False):
 
 @contextlib.contextmanager
 def redirect_stdout(target: T) -> T:
+    """Example only, use contextlib.redirect_stdout instead"""
     sys.stdout = target
     yield target
     sys.stdout = sys.__stdout__
@@ -37,6 +37,7 @@ def redirect_stdout(target: T) -> T:
 
 @contextlib.contextmanager
 def redirect_stderr(target: T) -> T:
+    """Example only, use contextlib.redirect_stderr instead"""
     sys.stderr = target
     yield target
     sys.stderr = sys.__stderr__
