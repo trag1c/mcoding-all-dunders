@@ -29,6 +29,7 @@ def print_error(exception: BaseException, pad: int = 0):
 
 class ExplainErrors:
     """Explains and suppresses any exceptions raised"""
+
     def __enter__(self):
         ...
 
