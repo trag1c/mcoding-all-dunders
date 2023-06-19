@@ -40,6 +40,9 @@ ruff check . --fix
 
 ## Credits
 
+People who have contributed at least 1 dunder or have reviewed at least 2 PRs
+are eligible for the **Volunteer** role on [the mCoding server].
+
 Big thanks to everybody who contributed with code examples or code reviews:
 - [@edsaac](https://github.com/edsaac)
 - [@FuexFollets](https://github.com/FuexFollets)
@@ -49,8 +52,8 @@ Big thanks to everybody who contributed with code examples or code reviews:
 - [@qexat](https://github.com/qexat)
 - [@trag1c](https://github.com/trag1c)
 
-
 [Issues tab]: https://github.com/trag1c/mcoding-all-dunders/issues
 [mCoding]: https://www.youtube.com/@mCoding
+[the mCoding server]: http://mcoding.io/discord
 [PEP8]: https://peps.python.org/pep-0008/
 [spreadsheet]: https://docs.google.com/spreadsheets/d/1-45UeKKMCePmTDLptT2zpI4L-jikmsCnve_lwOMyeuY/edit?usp=sharing
