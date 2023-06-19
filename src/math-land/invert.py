@@ -14,7 +14,7 @@ class PrimaryColor:
     AttributeError: 'PrimaryColor' object has no attribute 'another_attr'
     """
 
-    __slots__ = "value"
+    __slots__ = ("value",)
 
     def __init__(self, value: int) -> None:
         """
