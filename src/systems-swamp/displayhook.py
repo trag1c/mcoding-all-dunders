@@ -10,10 +10,9 @@ from pprint import pprint
 
 def activate_pretty():
     def hook(value):
+        if value is not None:
+            pprint(value)
         builtins._ = value
-        if value is None:
-            return
-        pprint(value)
 
     sys.displayhook = hook
 

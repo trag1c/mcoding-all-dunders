@@ -5,7 +5,7 @@ import sys
 
 @contextlib.contextmanager
 def silence_unraiseables():
-    sys.unraisablehook = lambda *args, **kwargs: ...
+    sys.unraisablehook = lambda *args, **kwargs: None
     yield
     sys.unraisablehook = sys.__unraisablehook__
 

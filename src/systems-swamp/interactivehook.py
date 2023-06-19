@@ -13,16 +13,15 @@ from pprint import pprint
 
 BANNER = """
 ********************************************************************************
-******************** We in the interactive session, babey! *********************
+*********************** Remember to like and subscribe *************************
 ********************************************************************************
 """
 
 
 def displayhook(value):
+    if value is not None:
+        pprint(value)
     builtins._ = value
-    if value is None:
-        return
-    pprint(value)
 
 
 def _startup():

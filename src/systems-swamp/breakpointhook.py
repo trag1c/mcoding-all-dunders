@@ -12,7 +12,7 @@ from textwrap import indent
 class PdbLocals(Pdb):
     """Pdb... with locals (and some minor formatting)"""
 
-    def _short_path(self, filename) -> Path:
+    def _short_path(self, filename):
         try:
             return Path(filename).resolve().relative_to(Path.cwd())
         except ValueError:
@@ -35,16 +35,17 @@ class PdbLocals(Pdb):
             return "Returning -> " + reprlib.repr(rv)
 
     def _locals(self):
-        return {
+        local_values = {
             k: v for k, v in self.curframe_locals.items() if k != "__return__"
         }
+        return f"Locals: {pformat(local_values)}"
 
     def format_stack_entry(self, frame_lineno, lprefix=": "):
         frame, lineno = frame_lineno
         lines = [self._header(frame, lineno) + "\n"]
         if line := self._code_line(frame, lineno):
             lines.append(line + "\n")
-        lines.append(f"Locals: {pformat(self._locals())}")
+        lines.append(self._locals())
         if return_value := self._return_value(frame):
             lines.append(return_value)
         lines.append("")
