@@ -1,4 +1,3 @@
-"""Makes error messages sArCaStIc"""
 import sys
 from contextlib import redirect_stderr
 from io import StringIO
@@ -11,6 +10,7 @@ def memeify(value: str) -> str:
 
 
 def sarcastic_excepthook(type, value, traceback):
+    """Makes error messages sArCaStIc"""
     with redirect_stderr(StringIO()) as f:
         sys.__excepthook__(type, value, traceback)
     message = memeify(f.getvalue())
