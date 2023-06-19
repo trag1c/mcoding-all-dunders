@@ -24,9 +24,9 @@ def displayhook(value):
     builtins._ = value
 
 
-def _startup():
+def interactivehook():
     print(BANNER)
     sys.displayhook = displayhook
 
 
-sys.__interactivehook__ = _startup
+sys.__interactivehook__ = interactivehook

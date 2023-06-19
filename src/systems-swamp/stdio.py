@@ -51,6 +51,8 @@ with (
     value = input("Input: ")
     print(f"Some stdout, with the input value of `{value}`")
     print("Some stderr", file=sys.stderr)
+    print(f"Some more stdout")
+    print("Some more stderr", file=sys.stderr)
 
 print("The stdout:", indent(stdout.getvalue(), "> "), sep="\n")
 print("The stderr:", indent(stderr.getvalue(), "> "), sep="\n")

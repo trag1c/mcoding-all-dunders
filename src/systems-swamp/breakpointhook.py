@@ -1,4 +1,3 @@
-"""Adds locals to default Pdb debugger at `breakpoint()`"""
 import contextlib
 import linecache
 import reprlib
@@ -10,7 +9,9 @@ from textwrap import indent
 
 
 class PdbLocals(Pdb):
-    """Pdb... with locals (and some minor formatting)"""
+    """
+    Adds locals + extra formatting to default Pdb debugger at `breakpoint()`
+    """
 
     def _short_path(self, filename):
         try:
@@ -18,38 +19,38 @@ class PdbLocals(Pdb):
         except ValueError:
             return Path(filename).resolve()
 
-    def _header(self, frame, lineno):
-        name = frame.f_code.co_name if frame.f_code.co_name else "<lambda>"
-        filename = self._short_path(frame.f_code.co_filename)
+    def _header(self, lineno):
+        name = self.curframe.f_code.co_name or "<lambda>"
+        filename = self._short_path(self.curframe.f_code.co_filename)
         return f'File "{filename}" line {lineno} in {name}'
 
-    def _code_line(self, frame, lineno):
+    def _code_line(self, lineno):
         if lineno is not None:
-            path = self.canonic(frame.f_code.co_filename)
-            if line := linecache.getline(path, lineno, frame.f_globals):
+            path = self.canonic(self.curframe.f_code.co_filename)
+            if line := linecache.getline(path, lineno, self.curframe.f_globals):
                 return indent(line.strip(), " " * 4)
 
-    def _return_value(self, frame):
-        if "__return__" in frame.f_locals:
-            rv = frame.f_locals["__return__"]
+    def _return_value(self):
+        if "__return__" in self.curframe.f_locals:
+            rv = self.curframe.f_locals["__return__"]
             return "Returning -> " + reprlib.repr(rv)
 
     def _locals(self):
         local_values = {
             k: v for k, v in self.curframe_locals.items() if k != "__return__"
         }
-        return f"Locals: {pformat(local_values)}"
+        result = f"Locals: {pformat(local_values)}"
+        if return_value := self._return_value():
+            result += "\n" + return_value
+        return result
 
     def format_stack_entry(self, frame_lineno, lprefix=": "):
-        frame, lineno = frame_lineno
-        lines = [self._header(frame, lineno) + "\n"]
-        if line := self._code_line(frame, lineno):
-            lines.append(line + "\n")
+        _, lineno = frame_lineno
+        lines = [self._header(lineno)]
+        if line := self._code_line(lineno):
+            lines.append(line)
         lines.append(self._locals())
-        if return_value := self._return_value(frame):
-            lines.append(return_value)
-        lines.append("")
-        return "\n".join(lines)
+        return "\n\n".join(lines) + "\n"
 
 
 def set_trace(*, header=None):
@@ -79,7 +80,5 @@ def main():
 
 
 if __name__ == "__main__":
-    # enter "continue" before main finishes the first time
     with debug_with_locals():
         main()
-    main()

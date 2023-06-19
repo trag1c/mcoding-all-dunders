@@ -21,6 +21,7 @@ with silence_unraiseables():
     Foo()
     print("Done", file=sys.stderr)
 
+print(file=sys.stderr)
 
 print("Making Foo with regular hook:", file=sys.stderr)
 Foo()
