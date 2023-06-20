@@ -118,14 +118,17 @@ class Vector2:
     def __pos__(self):
         """Positive"""
         return Vector2(+self.x, +self.y)
-    
+
     def __str__(self):
         return f"Vector2(x: {self.x}, y: {self.y})"
-    
+
+
 vector = Vector2(3, 4)
-print(vector + Vector2(2, 1)) # Calls __add__ dunder and prints Vector2(x: 5, y: 5)
+print(
+    vector + Vector2(2, 1)
+)  # Calls __add__ dunder and prints Vector2(x: 5, y: 5)
 
 vector += Vector2(6, 9)
-print(vector) # Calls __iadd__ dunder and prints Vector2(x: 9, y: 13)
+print(vector)  # Calls __iadd__ dunder and prints Vector2(x: 9, y: 13)
 
-print(-vector) # Calls __neg__ and prints Vector2(x: -9, y: -13)
+print(-vector)  # Calls __neg__ and prints Vector2(x: -9, y: -13)
