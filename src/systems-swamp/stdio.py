@@ -1,23 +1,26 @@
 import builtins
 import contextlib
 import sys
+from collections.abc import Iterator
 from io import StringIO
 from textwrap import indent
-from typing import Any, TextIO, TypeVar
+from typing import TextIO, TypeVar
 
 T = TypeVar("T", bound=TextIO)
 
 SAVED_INPUT = input
 
 
-def _input(prompt: Any) -> str:
+def _input(prompt: object) -> str:
     result = SAVED_INPUT(prompt)
     print(result)
     return result
 
 
 @contextlib.contextmanager
-def redirect_stdin(target: TextIO, write_to_stdout: bool = False):
+def redirect_stdin(
+    target: TextIO, *, write_to_stdout: bool = False
+) -> Iterator[None]:
     sys.stdin = target
     if write_to_stdout:
         builtins.input = _input
@@ -28,7 +31,7 @@ def redirect_stdin(target: TextIO, write_to_stdout: bool = False):
 
 
 @contextlib.contextmanager
-def redirect_stdout(target: T) -> T:
+def redirect_stdout(target: T) -> Iterator[T]:
     """Example only, use contextlib.redirect_stdout instead"""
     sys.stdout = target
     yield target
@@ -36,7 +39,7 @@ def redirect_stdout(target: T) -> T:
 
 
 @contextlib.contextmanager
-def redirect_stderr(target: T) -> T:
+def redirect_stderr(target: T) -> Iterator[T]:
     """Example only, use contextlib.redirect_stderr instead"""
     sys.stderr = target
     yield target
