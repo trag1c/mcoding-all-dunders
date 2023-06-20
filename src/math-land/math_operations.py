@@ -62,54 +62,54 @@ class Vector2:
 
     def __ixor__(self, other):
         """XOR and assign operation"""
-        self = self ^ other
+        return self ^ other
 
     def __itruediv__(self, other):
         """Divide and assign operation"""
-        self = self / other
+        return self / other
 
     def __isub__(self, other):
         """Subtract and assign operation"""
-        self = self - other
+        return self - other
 
     def __ipow__(self, other):
-        self = self**other
+        return self**other
 
     def __ior__(self, other):
         """Bitwise or and assign operation"""
-        self = self | other
+        return self | other
 
     def __imul__(self, other):
         """Multiply and assign operation"""
-        self = self * other
+        return self * other
 
     def __imod__(self, other):
         """Modulo and assign operation"""
-        self = self % other
+        return self % other
 
     def __imatmul__(self, other):
         """Matmul and assign operation"""
-        self = self @ other
+        return self @ other
 
     def __irshift__(self, other):
         """RShift and assign operation"""
-        self = self >> other
+        return self >> other
 
     def __ilshift__(self, other):
         """LShift and assign operation"""
-        self = self << other
+        return self << other
 
     def __ifloordiv__(self, other):
         """Floordiv and assign operation"""
-        self = self // other
+        return self // other
 
     def __iadd__(self, other):
         """Add and assign to operation"""
-        self = self + other
+        return self + other
 
     def __iand__(self, other):
         """Add and assign to operation"""
-        self = self & other
+        return self & other
 
     def __neg__(self):
         """Negate"""
@@ -118,7 +118,14 @@ class Vector2:
     def __pos__(self):
         """Positive"""
         return Vector2(+self.x, +self.y)
+    
+    def __str__(self):
+        return f"Vector2(x: {self.x}, y: {self.y})"
+    
+vector = Vector2(3, 4)
+print(vector + Vector2(2, 1)) # Calls __add__ dunder and prints Vector2(x: 5, y: 5)
 
-    def __inv__(self):
-        """Bitwise invert"""
-        return Vector2(~self.x, ~self.y)
+vector += Vector2(6, 9)
+print(vector) # Calls __iadd__ dunder and prints Vector2(x: 9, y: 13)
+
+print(-vector) # Calls __neg__ and prints Vector2(x: -9, y: -13)
