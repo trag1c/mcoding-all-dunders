@@ -3,5 +3,5 @@ from pathlib import Path
 
 ASSETS = (Path(__file__) / ".." / "assets").resolve()
 
-with open(ASSETS / "haiku.txt", "r") as f:
+with (ASSETS / "haiku.txt").open() as f:
     print(f.read())
