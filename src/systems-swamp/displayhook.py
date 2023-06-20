@@ -1,6 +1,6 @@
 """
-When in an interactive session – import these functions and call
-activate_pretty to pretty print the result of all expressions
+Run in interactive mode (-i) or import this in an interactive session to
+pretty print the result of all expressions
 """
 
 import builtins
@@ -19,3 +19,6 @@ def activate_pretty():
 
 def deactivate_pretty():
     sys.displayhook = sys.__displayhook__
+
+
+activate_pretty()
