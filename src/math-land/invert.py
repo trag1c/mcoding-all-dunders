@@ -59,6 +59,10 @@ class RGBColor:
     >>> print(pink)
     (255, 192, 203)
 
+    >>> badcolor = RGBColor(1, 1, 1.0)
+    Traceback (most recent call last):
+        ...
+    TypeError: Color value must be an int
     """
 
     __slots__ = "r", "g", "b"
@@ -69,9 +73,9 @@ class RGBColor:
         g: int | PrimaryColor,
         b: int | PrimaryColor,
     ) -> None:
-        self.r = PrimaryColor(r) if isinstance(r, int) else r
-        self.g = PrimaryColor(g) if isinstance(g, int) else g
-        self.b = PrimaryColor(b) if isinstance(b, int) else b
+        self.r = r if isinstance(r, PrimaryColor) else PrimaryColor(r)
+        self.g = g if isinstance(g, PrimaryColor) else PrimaryColor(g)
+        self.b = b if isinstance(b, PrimaryColor) else PrimaryColor(b)
 
     def __invert__(self) -> Self:
         """Calculate the inverse of each PrimaryColor and returns a new
@@ -89,13 +93,17 @@ class RGBColor:
 
 
 def main():
-    print("==== Inverted colors===")
+    print("Inverted colors".center(30, "="))
     red = RGBColor(255, 0, 0)
     print(f"{red=:}, {~red=:} is cyan!")
 
     orange = RGBColor(255, 165, 0)
     antiorange = ~orange
     print(f"{orange=:}, {antiorange=:}")
+
+    be = PrimaryColor(190)
+    gray = RGBColor(be, be, be)
+    print(f"{gray=:}, {~gray=:}")
 
 
 if __name__ == "__main__":
