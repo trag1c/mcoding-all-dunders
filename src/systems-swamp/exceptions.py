@@ -1,3 +1,6 @@
+from types import TracebackType
+from typing import Type
+
 SUPPRESSED_HEADER = "(But the context was suppressed (__suppress_context__))"
 CONTEXT_HEADER = (
     "- The above error happened while handling this error (__context__):"
@@ -33,9 +36,15 @@ class ExplainErrors:
     def __enter__(self):
         ...
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        print_error(exc_val, pad=4)
-        print()
+    def __exit__(
+        self,
+        exc_type: Type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: TracebackType | None,
+    ) -> bool:
+        if exc_val is not None:
+            print_error(exc_val, pad=4)
+            print()
         return True
 
 
@@ -49,6 +58,13 @@ with ExplainErrors():
         result = 1 / 0
     except ZeroDivisionError:
         raise ValueError("Can't use 0")
+
+print("Another Exception with context:")
+with ExplainErrors():
+    try:
+        result = 1 / 0
+    except ZeroDivisionError:
+        result = "a" + 3
 
 print("Exception with suppressed context:")
 with ExplainErrors():
