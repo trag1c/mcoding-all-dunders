@@ -28,10 +28,6 @@ class Vector2:
         """Rightshift operation"""
         return Vector2(self.x >> other.x, self.y >> other.y)
 
-    def __matmul__(self, other):
-        """Matmul operation"""
-        return Vector2(self.x @ other.x, self.y @ other.y)
-
     def __mod__(self, other):
         """Modulus operation"""
         return Vector2(self.x % other.x, self.y % other.y)
@@ -86,10 +82,6 @@ class Vector2:
     def __imod__(self, other):
         """Modulo and assign operation"""
         return self % other
-
-    def __imatmul__(self, other):
-        """Matmul and assign operation"""
-        return self @ other
 
     def __irshift__(self, other):
         """RShift and assign operation"""
