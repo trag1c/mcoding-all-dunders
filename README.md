@@ -38,6 +38,21 @@ black .
 ruff check . --fix
 ```
 
+### Giveaway
+Everyone who contributes a dunder before **July 23** is entered into the
+giveaway for Discord Nitro or a JetBrains license. All entrants have the same
+chances regardless of how many dunders they have added. However, the
+winners with the highest number of contributions have priority and can choose
+their prize.
+
+| Prize Pool                   |
+| ---                          |
+| **2x** 1-Month Discord Nitro |
+| **1x** 1-Year Discord Nitro  |
+| **2x** JetBrains License     |
+
+*The giveaway was funded by @mcoding and @pi3014 on Discord :heart:*
+
 ## Credits
 
 People who have contributed at least 1 dunder or have reviewed at least 2 PRs
