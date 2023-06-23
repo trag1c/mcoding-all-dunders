@@ -29,4 +29,6 @@ if __name__ == "__main__":
     print("Printing the output from __str__()")
     print(my_class)
     print("The str() output is:", str(my_class))
-    print(f"Calling the str using f-string: {my_class!s}")
+    # !s is the modifier for str and is equivalent to {my_class}
+    print(f"Calling the str using f-string: {my_class!s} == {my_class}")
+
