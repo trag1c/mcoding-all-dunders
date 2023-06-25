@@ -68,7 +68,11 @@ class Fraction:
         return int(self / other)
 
     def __mod__(self, other: Fraction) -> Fraction:
-        return Fraction((self.numerator * other.denominator) % (other.numerator * self.numerator), self.denominator * other.denominator).simplify()
+        return Fraction(
+            (self.numerator * other.denominator)
+            % (other.numerator * self.numerator),
+            self.denominator * other.denominator,
+        ).simplify()
 
     def __divmod__(self, other: Fraction) -> tuple[Fraction, Fraction]:
         return (self // other, self % other)
