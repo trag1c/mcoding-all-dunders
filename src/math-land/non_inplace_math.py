@@ -16,9 +16,14 @@ class Fraction:
 
     def simplify(self) -> Fraction:
         gcd: int = math.gcd(self.numerator, self.denominator)
-        negative_remover = -1 if (self.numerator < 0 and self.denominator < 0) else 1
+        negative_remover = (
+            -1 if (self.numerator < 0 and self.denominator < 0) else 1
+        )
 
-        return Fraction(self.numerator // gcd * negative_remover, self.denominator // gcd * negative_remover)
+        return Fraction(
+            self.numerator // gcd * negative_remover,
+            self.denominator // gcd * negative_remover,
+        )
 
     def flip(self) -> Fraction:
         return Fraction(self.denominator, self.numerator)
@@ -31,13 +36,15 @@ class Fraction:
 
     def __add__(self, other: Fraction) -> Fraction:
         return Fraction(
-            self.numerator * other.denominator + other.numerator * self.denominator,
+            self.numerator * other.denominator
+            + other.numerator * self.denominator,
             self.denominator * other.denominator,
         ).simplify()
 
     def __sub__(self, other: Fraction) -> Fraction:
         return Fraction(
-            self.numerator * other.denominator - other.numerator * self.denominator,
+            self.numerator * other.denominator
+            - other.numerator * self.denominator,
             self.denominator * other.denominator,
         ).simplify()
 
@@ -52,7 +59,8 @@ class Fraction:
             return Fraction(self.numerator * other, self.denominator).simplify()
 
         return Fraction(
-            self.numerator * other.numerator, self.denominator * other.denominator
+            self.numerator * other.numerator,
+            self.denominator * other.denominator,
         ).simplify()
 
     def __truediv__(self, other: Fraction) -> Fraction:
@@ -67,11 +75,12 @@ class Fraction:
         return self - remainder * other
 
     def __divmod__(self, other: Fraction) -> tuple[Fraction, Fraction]:
-        return (self // other,
-                self % other)
+        return (self // other, self % other)
 
     def __pow__(self, power: int) -> Fraction:
-        return Fraction(self.numerator ** power, self.denominator ** power).simplify()
+        return Fraction(
+            self.numerator**power, self.denominator**power
+        ).simplify()
 
     def __abs__(self) -> Fraction:
         return Fraction(abs(self.numerator), abs(self.denominator)).simplify()
