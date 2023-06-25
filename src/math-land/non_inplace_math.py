@@ -1,135 +1,100 @@
 # Dunders __add__, __sub__, __pos__, __neg__,
 # __mul__, __floordiv__, __truediv__, __divmod__, __mod__,
-# __abs__, __trunc__, __pow__
+# __abs__, __trunc__, __pow__, __ceil__, __floor__. __int__, __float__
 
 from __future__ import annotations
 
 import math
 
 
-class NumberWrapper:
-    def __init__(self, value: int | float) -> None:
-        self.value = value
+class Fraction:
+    def __init__(self, numerator: int, denominator: int) -> None:
+        self.numerator: int = numerator
+        self.denominator: int = denominator
 
-    def __add__(self, other: NumberWrapper) -> NumberWrapper:
-        return NumberWrapper(self.value + other.value)
+        self.simplify()
 
-    def __sub__(self, other: NumberWrapper) -> NumberWrapper:
-        return NumberWrapper(self.value - other.value)
+    def simplify(self) -> Fraction:
+        gcd: int = math.gcd(self.numerator, self.denominator)
+        negative_remover = -1 if (self.numerator < 0 and self.denominator < 0) else 1
 
-    def __pos__(self) -> NumberWrapper:
-        return NumberWrapper(+self.value)
+        return Fraction(self.numerator // gcd * negative_remover, self.denominator // gcd * negative_remover)
 
-    def __neg__(self) -> NumberWrapper:
-        return NumberWrapper(-self.value)
+    def flip(self) -> Fraction:
+        return Fraction(self.denominator, self.numerator)
 
-    def __abs__(self) -> NumberWrapper:
-        return NumberWrapper(abs(self.value))
+    def __float__(self) -> float:
+        return self.numerator / self.denominator
 
-    def __mul__(self, scalar: int | float) -> NumberWrapper:
-        return NumberWrapper(self.value * scalar)
+    def __int__(self) -> int:
+        return self.numerator // self.denominator
 
-    def __floordiv__(self, divisor: int | float) -> NumberWrapper:
-        return NumberWrapper(self.value // divisor)
+    def __add__(self, other: Fraction) -> Fraction:
+        return Fraction(
+            self.numerator * other.denominator + other.numerator * self.denominator,
+            self.denominator * other.denominator,
+        ).simplify()
 
-    def __truediv__(self, divisor: int | float) -> NumberWrapper:
-        return NumberWrapper(self.value / divisor)
+    def __sub__(self, other: Fraction) -> Fraction:
+        return Fraction(
+            self.numerator * other.denominator - other.numerator * self.denominator,
+            self.denominator * other.denominator,
+        ).simplify()
 
-    def __divmod__(
-        self, divisor: int | float
-    ) -> tuple[NumberWrapper, NumberWrapper]:
-        return (
-            NumberWrapper(self.value // divisor),
-            NumberWrapper(self.value % divisor),
-        )
+    def __pos__(self) -> Fraction:
+        return Fraction(self.numerator, self.denominator).simplify()
 
-    def __mod__(self, divisor: int | float) -> NumberWrapper:
-        return NumberWrapper(self.value % divisor)
+    def __neg__(self) -> Fraction:
+        return Fraction(-self.numerator, self.denominator).simplify()
 
-    def __pow__(self, power: int | float) -> NumberWrapper:
-        return NumberWrapper(self.value**power)
+    def __mul__(self, other: Fraction | int) -> Fraction:
+        if isinstance(other, int):
+            return Fraction(self.numerator * other, self.denominator).simplify()
 
-    def __floor__(self) -> NumberWrapper:
-        return NumberWrapper(math.floor(self.value))
+        return Fraction(
+            self.numerator * other.numerator, self.denominator * other.denominator
+        ).simplify()
 
-    def __ceil__(self) -> NumberWrapper:
-        return NumberWrapper(math.ceil(self.value))
+    def __truediv__(self, other: Fraction) -> Fraction:
+        return (self * other.flip()).simplify()
+
+    def __floordiv__(self, other: Fraction) -> int:
+        return int(self / other)
+
+    def __mod__(self, other: Fraction) -> Fraction:
+        remainder: int = other - other * (self // other)
+
+        return self - remainder * other
+
+    def __divmod__(self, other: Fraction) -> tuple[Fraction, Fraction]:
+        return (self // other,
+                self % other)
+
+    def __pow__(self, power: int) -> Fraction:
+        return Fraction(self.numerator ** power, self.denominator ** power).simplify()
+
+    def __abs__(self) -> Fraction:
+        return Fraction(abs(self.numerator), abs(self.denominator)).simplify()
 
     def __trunc__(self) -> int:
-        return int(self.value)
+        # possible implementation
+        # return int(float(self))
 
-    def __str__(self) -> str:  # For printing
-        return str(self.value)
+        # better way
+        return self.numerator // self.denominator
+
+    def __ceil__(self) -> int:
+        return math.ceil(float(self))
+
+    def __floor__(self) -> int:
+        return math.floor(float(self))
+
+    def __str__(self) -> str:
+        return f"{self.numerator}/{self.denominator}"
 
 
 def main():
-    number_100 = NumberWrapper(100)
-    number_neg200 = NumberWrapper(-200)  # Owes land to the government
-    number_5point5 = NumberWrapper(5.5)
-
-    print(
-        f"Combined value of number_100, number_neg200: {number_100 + number_5point5}"
-    )  # Calls __add__
-
-    # Calls __sub__
-    print(
-        f"The value of number_100 taken away from plot 2: {number_100 - number_5point5}"
-    )
-
-    print(
-        f"Positive of number_100 value +(number_100.value): {+number_100}"
-    )  # Calls __pos__
-    print(
-        f"Negative of number_100 value -(number_100): {-number_100}"
-    )  # Calls __neg__
-    print(
-        f"Absolute value number_neg200 value: {abs(number_neg200)}"
-    )  # Calls __abs__
-    print(
-        f"number_100 value being scaled by 3: {number_100 * 3}"
-    )  # Calls __mul__
-
-    # Calls __pow__
-    print(
-        f"number_5point5 value being raised to the power of 3 {number_5point5 ** 3}"
-    )
-    # pow(number_5point5, 3) also works
-
-    # Calls __floordiv__
-    print(
-        "Divisions into plots of land from number_100 of exactly 9 value: "
-        f"{number_100 // 9}"
-    )
-    print(
-        f"Divides number_neg200 into 5 pieces: {number_neg200 / 5}"
-    )  # Calls __truediv__
-
-    divisions, remainder = divmod(number_100, 7)  # Calls __divmod__
-    print(
-        f"number_100 can be divided into {divisions} plots of 7 value each "
-        f"with a remainder of {remainder} value"
-    )
-
-    # Calls __mod__
-    print(
-        f"The remainder of dividing number_100 into 22 whole pieces is"
-        f"{number_100 % 22}"
-    )
-
-    # Calls __floor__
-    print(
-        f"The value of number_5point5 rounded down is: {math.floor(number_5point5)}"
-    )
-
-    # calls __ceil__
-    print(
-        f"The are of number_5point5 rounded up is: {math.ceil(number_5point5)}"
-    )
-
-    # calls __trunc__
-    print(
-        f"The truncated integer value of number_5point5 {math.trunc(number_5point5)}"
-    )
+    pass
 
 
 if __name__ == "__main__":
