@@ -109,52 +109,78 @@ def main():
     negative_seven_over_nine: Fraction = Fraction(-7, 9)
 
     # __float__
-    print(f"Floating point value of {three_over_five} is {float(three_over_five)}")
+    print(
+        f"Floating point value of {three_over_five} is {float(three_over_five)}"
+    )
 
     # __int__
-    print(f"Integer floored value of {three_over_five} is {int(three_over_five)}")
+    print(
+        f"Integer floored value of {three_over_five} is {int(three_over_five)}"
+    )
 
     # __add__
-    print(f"{three_over_five} + {one_over_two} = {three_over_five + one_over_two}")
+    print(
+        f"{three_over_five} + {one_over_two} = {three_over_five + one_over_two}"
+    )
 
     # __sub__
-    print(f"{three_over_five} - {one_over_two} = {three_over_five - one_over_two}")
+    print(
+        f"{three_over_five} - {one_over_two} = {three_over_five - one_over_two}"
+    )
 
     # __pos__
-    print(f"Positive value of {negative_seven_over_nine} is {+negative_seven_over_nine}")
+    print(
+        f"Positive value of {negative_seven_over_nine} is {+negative_seven_over_nine}"
+    )
 
     # __neg__
     print(f"Negative value of {three_over_five} is {-three_over_five}")
 
     # __mul__
-    print(f"{three_over_five} * {one_over_two} = {three_over_five * one_over_two}")
+    print(
+        f"{three_over_five} * {one_over_two} = {three_over_five * one_over_two}"
+    )
 
     # __truediv__
-    print(f"{three_over_five} / {one_over_two} = {three_over_five / one_over_two}")
+    print(
+        f"{three_over_five} / {one_over_two} = {three_over_five / one_over_two}"
+    )
 
     # __floordiv__
-    print(f"{three_over_five} // {one_over_two} = {three_over_five // one_over_two}")
+    print(
+        f"{three_over_five} // {one_over_two} = {three_over_five // one_over_two}"
+    )
 
     # __mod__
-    print(f"{three_over_five} % {one_over_two} = {three_over_five % one_over_two}")
+    print(
+        f"{three_over_five} % {one_over_two} = {three_over_five % one_over_two}"
+    )
 
     # __divmod__
-    print(f"divmod({three_over_five}, {one_over_two}) = {divmod(three_over_five, one_over_two)}")
+    print(
+        f"divmod({three_over_five}, {one_over_two}) = {divmod(three_over_five, one_over_two)}"
+    )
 
     # __pow__
     print(f"{three_over_five} ** 2 = {three_over_five ** 2}")
 
     # __abs__
-    print(f"Absolute value of {negative_seven_over_nine} is {abs(negative_seven_over_nine)}")
+    print(
+        f"Absolute value of {negative_seven_over_nine} is {abs(negative_seven_over_nine)}"
+    )
 
     # __trunc__
-    print(f"Truncated value of {three_over_five} is {math.trunc(three_over_five)}")
+    print(
+        f"Truncated value of {three_over_five} is {math.trunc(three_over_five)}"
+    )
 
     # __ceil__
     print(f"Ceiled value of {three_over_five} is {math.ceil(three_over_five)}")
 
     # __floor__
-    print(f"Floored value of {three_over_five} is {math.floor(three_over_five)}")
+    print(
+        f"Floored value of {three_over_five} is {math.floor(three_over_five)}"
+    )
 
 
 if __name__ == "__main__":
