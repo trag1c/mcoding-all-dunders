@@ -68,9 +68,7 @@ class Fraction:
         return int(self / other)
 
     def __mod__(self, other: Fraction) -> Fraction:
-        remainder: int = self - other * (self // other)
-
-        return self - remainder * other
+        return self - other * (self // other)
 
     def __divmod__(self, other: Fraction) -> tuple[Fraction, Fraction]:
         return (self // other, self % other)
