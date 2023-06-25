@@ -68,7 +68,7 @@ class Fraction:
         return int(self / other)
 
     def __mod__(self, other: Fraction) -> Fraction:
-        remainder: int = other - other * (self // other)
+        remainder: int = self - other * (self // other)
 
         return self - remainder * other
 
