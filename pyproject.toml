@@ -1,3 +1,23 @@
+[tool.poetry]
+name = "mcoding-all-dunders"
+version = "0.0.1"
+description = "Code examples for mCoding's all dunders video"
+authors = ["trag1c <trag1cdev@yahoo.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "mcoding_all_dunders"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+ruff = "^0.0.275"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.black]
 line-length=80
 
