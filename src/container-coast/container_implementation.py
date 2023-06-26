@@ -13,9 +13,6 @@ class BinaryTree:
         self.left = None
         self.right = None
 
-    def __missing__(self, key):
-        raise KeyError(f"Key {key} not found")
-
     def __contains__(self, key):
         if self.key == key:
             return True
@@ -46,7 +43,7 @@ class BinaryTree:
             return self.value
 
         if key not in self:
-            return self.__missing__(key)
+            raise KeyError(f"Key {key} not found")
 
         if key < self.key:
             return self.left[key]
@@ -57,7 +54,7 @@ class BinaryTree:
         if key in self:
             self[key] = None
         else:
-            self.__missing__(key)
+            raise KeyError(f"Key {key} not found")
 
     def __len__(self):
         if self.key is None:
@@ -137,8 +134,7 @@ def main():
     print(f"Tree has 8 as a key: {8 in tree}")  # Calls __contains__
 
     try:
-        # Calls __getitem__ but fails and calld
-        # __missing__ which raises KeyError
+        # Calls __getitem__ but fails and raises a KeyError
         print(tree[100])
 
     except KeyError as e:
