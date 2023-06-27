@@ -5,28 +5,23 @@ from __future__ import annotations
 
 
 class LivingThing:
-    def get_class_name(self) -> str:
-        return "LivingThing"
+    ...
 
 
 class SmallThing:
-    def get_class_name(self) -> str:
-        return "SmallThing"
+    ...
 
 
 class Animal(LivingThing):
-    def get_class_name(self) -> str:
-        return "Animal"
+    ...
 
 
 class Zebra(Animal):
-    def get_class_name(self) -> str:
-        return "Zebra"
+    ...
 
 
 class Ant(Animal, SmallThing):
-    def get_class_name(self) -> str:
-        return "Ant"
+    ...
 
 
 # Inheritance tree
