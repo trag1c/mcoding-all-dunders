@@ -12,8 +12,6 @@ class Citizen:
     def __hash__(self) -> int:
         return hash((self.name, self.surname, self.address))
 
-
-
     def __eq__(self, other: object) -> bool:
         if isinstance(other, Citizen):
             # objects which compare equal must have the same hash value
