@@ -1,5 +1,5 @@
 from collections.abc import Sequence
-from typing import TypeVar, Generic
+from typing import Generic, TypeVar
 
 T = TypeVar("T")
 
