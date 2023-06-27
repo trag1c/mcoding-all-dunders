@@ -4,63 +4,63 @@
 from __future__ import annotations
 
 
-class Carbon:
-    def get_atom(self) -> str:
-        return "C"
+class LivingThing:
+    def get_class_name(self) -> str:
+        return "LivingThing"
 
 
-class Hydrogen:
-    def get_atom(self) -> str:
-        return "H"
+class SmallThing:
+    def get_class_name(self) -> str:
+        return "SmallThing"
 
 
-class Oxygen:
-    def get_atom(self) -> str:
-        return "O"
+class Cell(LivingThing, SmallThing):
+    def get_class_name(self) -> str:
+        return "Cell"
 
 
-class Ozone(Oxygen):
-    ...
+class Prokaryote(Cell):
+    def get_class_name(self) -> str:
+        return "Prokaryote"
 
 
-class Water(Oxygen, Hydrogen):
-    ...
+class Eukaryote(Cell):
+    def get_class_name(self) -> str:
+        return "Eukaryote"
 
 
-class CarbonDioxide(Carbon, Oxygen):
-    ...
+class Animal(LivingThing):
+    def get_class_name(self) -> str:
+        return "Animal"
 
 
-class Glucose(CarbonDioxide, Water):
-    ...
+class Zebra(Animal):
+    def get_class_name(self) -> str:
+        return "Zebra"
+
+
+class Ant(Animal, SmallThing):
+    def get_class_name(self) -> str:
+        return "Ant"
 
 
 # Inheritance tree
 #
-#          Glucose
-#         /        \
-# CarbonDioxide     Water
-#       |     Ozone   |
-#       /\    |      /\
-#      /  \   |     /  \
-#     /    \  |    /    \
-# Carbon     Oxygen   Hydrogen
+#          LivingThing   SmallThing
+#         /          \  /    |
+#       Animal       Cell    |
+#       /    \       /  \    /
+#      Zebra  \     PK   EK /
+#              \           /
+#               \         /
+#                \       /
+#                 \     /
+#                  \   /
+#                   Ant
 
 
 def main():
-    print(f"Glucose derives from {Glucose.__bases__ = }")
-    print(f"CarbonDioxide derives from {CarbonDioxide.__bases__ = }")
-    print(f"Ozone derives from {Ozone.__base__ = }")
-
-    # __base__ is the first element of __bases__
-    # and the first in the inheritance list
-    print(f"Water first derives from {Water.__base__ = }")
-
-    # `__bases__` is the derivation order. `__base__` is the first element
-    # Oxygen.get_atom() is called since it was the first in the derivation list
-
-    print(f"Water first derives from {Water().get_atom() = }")
-    print(f"Classes that derive from Oxygen: {Oxygen.__subclasses__() = }")
+    ...
 
 
 if __name__ == "__main__":
