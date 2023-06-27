@@ -7,10 +7,14 @@ is in progress (see the [spreadsheet] or the [Issues tab] for reference). Once
 you have confirmed that, open an issue for the dunder(s) you'd like to add
 examples for. When you're done, simply make a PR!
 
+Each PR is required to have 3 approving reviews in order to be merged, and
+anyone is free to review, so your approval counts!
+
 ### Submission guidelines
 * The code has to be [PEP8]-compliant and lines must be at most 80 chars long
 * Typehints are not necessary (unless needed for the example to work)
-* Be consistent about typehints: either do them properly or don't include them at all
+* Be consistent about typehints: either do them properly or don't include them
+  at all
 * Examples can include multiple dunders if they go together
 * The code should be a minimal working example that uses the dunder(s)
 
@@ -26,7 +30,8 @@ The file should be put in the corresponding folder inside `src`, e.g. a
 `__post_init__` example should be located in `src/library-lagoon/post_init.py`
 (see categories in the [spreadsheet]).
 
-Your code must pass CI. To check if your code will pass CI locally run these commands:
+Your code must pass CI. To check if your code will pass CI locally run these
+commands:
 ```
 pip install -r requirements.txt
 black --check .
