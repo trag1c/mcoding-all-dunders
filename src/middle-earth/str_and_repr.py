@@ -3,7 +3,7 @@ class MyCoolClass:
         self.value = value
 
     def __repr__(self) -> str:
-        """Repr prints the python code to create this python object."""
+        """repr returns string containing a printable representation of an object"""
         return f"MyCoolClass(value={self.value!r})"
 
     def __str__(self) -> str:
