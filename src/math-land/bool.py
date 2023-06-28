@@ -18,7 +18,6 @@ class Queue(Generic[T]):
         return self.pop(0)
 
 
-# no __bool__ defined => always True
 class PlainClass:
     pass
 
@@ -26,12 +25,21 @@ class PlainClass:
 if __name__ == "__main__":
     que = Queue()
 
-    if not que:
-        print(bool(que))
+    if que:
+        print("que is non-empty")
+    else:
+        print("que is empty")
+
+    print(f"{bool(que)=}") #False
 
     que.put("person")
 
     if que:
-        print(bool(que))
+        print("que is non-empty")
+    else:
+        print("que is empty")
 
-    print(bool(PlainClass()))
+    print(f"{bool(que)=}") #True
+
+    # class without a `__bool__` method are always Truthy
+    print(f"{bool(PlainClass())=}")
