@@ -18,11 +18,15 @@ if __name__ == "__main__":
     class_repr = repr(my_class)
     print("The repr is:", class_repr)
 
-    # Evaluating the repr gives us identical object most of the time. Except in some occasions like:
+    # Evaluating the repr gives us identical object most of the time.
+    # Except in some occasions like:
+    #
     # digit_regex = re.compile(r"\d")
     # x = lambda y: y
     # o = object()
-    # Calling eval on these objects will either not return same object or will result in an error.
+    #
+    # Calling eval on these objects will either not return same object
+    # or result in an error.
     print("The evaled repr is:", repr(eval(class_repr)))
     print(f"Calling the repr using f-string: {my_class!r}")
 
