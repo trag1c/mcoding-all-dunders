@@ -41,5 +41,5 @@ if __name__ == "__main__":
 
     print(f"{bool(que)=}") #True
 
-    # class without a `__bool__` method are always Truthy
+    # instances of classes without a `__bool__` method are always truthy
     print(f"{bool(PlainClass())=}")
