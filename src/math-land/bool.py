@@ -30,7 +30,7 @@ if __name__ == "__main__":
     else:
         print("que is empty")
 
-    print(f"{bool(que)=}") #False
+    print(f"{bool(que)=}")  # False
 
     que.put("person")
 
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     else:
         print("que is empty")
 
-    print(f"{bool(que)=}") #True
+    print(f"{bool(que)=}")  # True
 
     # instances of classes without a `__bool__` method are always truthy
     print(f"{bool(PlainClass())=}")
