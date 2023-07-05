@@ -17,8 +17,7 @@ class PrimaryColor:
     __slots__ = ("value",)
 
     def __init__(self, value: int) -> None:
-        """
-        Inititalize and check if the PrimaryColor has a valid value
+        """Inititalize and check if the PrimaryColor has a valid value
 
         >>> PrimaryColor(888)
         Traceback (most recent call last):
@@ -32,8 +31,7 @@ class PrimaryColor:
         self.value = value
 
     def __invert__(self) -> Self:
-        """
-        Returns the inverse of the color as the complement to 255
+        """Returns the inverse of the color as the complement to 255
 
         >>> print(~PrimaryColor(100))
         155
@@ -45,8 +43,7 @@ class PrimaryColor:
 
 
 class RGBColor:
-    """
-    A color in RGB space.
+    """A color in RGB space.
 
     >>> pink = RGBColor(255, 192, 203)
     >>> print(pink)
