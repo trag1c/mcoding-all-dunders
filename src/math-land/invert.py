@@ -79,7 +79,7 @@ class RGBColor:
         return f"({self.r}, {self.g}, {self.b})"
 
 
-def main():
+def main() -> None:
     print("Inverted colors".center(30, "="))
     red = RGBColor(255, 0, 0)
     print(f"{red=:}, {~red=:} is cyan!")
