@@ -37,9 +37,6 @@ class BinarizableFloat(float):
     OverflowError: float too large to pack with f format
     """
 
-    def __new__(cls, val, *args, **kwargs):
-        return super(BinarizableFloat, cls).__new__(cls, val)
-
     def __format__(self, __format_spec: str) -> str:
         """If the format specification is 'b', the IEEE 754 binary32
         representation is returned as a string of zeros and ones.
