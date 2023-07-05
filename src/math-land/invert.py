@@ -51,7 +51,7 @@ class RGBColor:
 
     """
 
-    __slots__ = "r", "g", "b"
+    __slots__ = ("r", "g", "b")
 
     def __init__(
         self,
