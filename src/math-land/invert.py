@@ -36,6 +36,7 @@ class PrimaryColor:
         >>> print(~PrimaryColor(100))
         155
         """
+
         return PrimaryColor(255 - self.value)
 
     def __str__(self) -> str:
@@ -43,12 +44,11 @@ class PrimaryColor:
 
 
 class RGBColor:
-    """A color in RGB space.
+    """A color in RGB space
 
     >>> pink = RGBColor(255, 192, 203)
     >>> print(pink)
     (255, 192, 203)
-
     """
 
     __slots__ = ("r", "g", "b")
@@ -72,6 +72,7 @@ class RGBColor:
         >>> print(antipink)
         (0, 63, 52)
         """
+
         return RGBColor(~self.r, ~self.g, ~self.b)
 
     def __str__(self) -> str:
