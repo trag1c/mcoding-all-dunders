@@ -37,7 +37,7 @@ class PrimaryColor:
         155
         """
 
-        return PrimaryColor(255 - self.value)
+        return type(self)(255 - self.value)
 
     def __str__(self) -> str:
         return str(self.value)
@@ -73,7 +73,7 @@ class RGBColor:
         (0, 63, 52)
         """
 
-        return RGBColor(~self.r, ~self.g, ~self.b)
+        return type(self)(~self.r, ~self.g, ~self.b)
 
     def __str__(self) -> str:
         return f"({self.r}, {self.g}, {self.b})"
