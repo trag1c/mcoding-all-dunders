@@ -46,7 +46,7 @@ class BinarizableFloat(float):
         for more details.
 
         Notes:
-        - Byte order is fixed to little-endian.
+        - Byte order is fixed to big-endian.
         """
 
         if __format_spec == "b":
