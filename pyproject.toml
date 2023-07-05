@@ -9,3 +9,4 @@ select = [
   # Isort
   "I",
 ]
+line-length=80
