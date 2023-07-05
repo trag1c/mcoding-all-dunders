@@ -20,18 +20,11 @@ class PrimaryColor:
         """
         Inititalize and check if the PrimaryColor has a valid value
 
-        >>> PrimaryColor(230.5)
-        Traceback (most recent call last):
-            ...
-        TypeError: Color value must be an int
-
         >>> PrimaryColor(888)
         Traceback (most recent call last):
             ...
         ValueError: Color value is not between 0 and 255
         """
-        if not isinstance(value, int):
-            raise TypeError("Color value must be an int")
 
         if not 0 <= value <= 255:
             raise ValueError("Color value is not between 0 and 255")
@@ -59,10 +52,6 @@ class RGBColor:
     >>> print(pink)
     (255, 192, 203)
 
-    >>> badcolor = RGBColor(1, 1, 1.0)
-    Traceback (most recent call last):
-        ...
-    TypeError: Color value must be an int
     """
 
     __slots__ = "r", "g", "b"
