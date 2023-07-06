@@ -68,6 +68,7 @@ Big thanks to everybody who contributed with code examples or code reviews:
 - [@edsaac](https://github.com/edsaac)
 - [@Endercheif](https://github.com/Endercheif)
 - [@FuexFollets](https://github.com/FuexFollets)
+- [@isFakeAccount](https://github.com/isFakeAccount)
 - [@Lunarmagpie](https://github.com/Lunarmagpie)
 - [@MicaelJarniac](https://github.com/MicaelJarniac)
 - [@MithicSpirit](https://github.com/MithicSpirit)
