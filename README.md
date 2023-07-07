@@ -64,6 +64,7 @@ People who have contributed at least 1 dunder or have reviewed at least 2 PRs
 are eligible for the **Volunteer** role on [the mCoding server].
 
 Big thanks to everybody who contributed with code examples or code reviews:
+- [@bswck](https://github.com/bswck)
 - [@CircuitSacul](https://github.com/CircuitSacul)
 - [@edsaac](https://github.com/edsaac)
 - [@Endercheif](https://github.com/Endercheif)
