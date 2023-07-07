@@ -32,6 +32,10 @@ def main() -> None:
     print("Circle docstring:", Circle.__doc__)
     print("Circle.from_area docstring:", Circle.from_area.__doc__)
     print("abs docstring:", abs.__doc__)
+
+    print("Circle.__init__ docstring:", Circle.__init__.__doc__)
+    # __doc__ is always defined, even with no docstring
+
     help(Circle.from_area)  # in the REPL
 
 
