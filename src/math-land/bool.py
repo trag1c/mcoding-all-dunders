@@ -15,7 +15,7 @@ class Queue(Generic[T]):
         self.items.append(item)
 
     def get(self) -> T:
-        return self.item.pop(0)
+        return self.items.pop(0)
 
 
 class PlainClass:
