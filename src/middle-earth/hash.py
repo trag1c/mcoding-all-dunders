@@ -21,9 +21,9 @@ class Citizen:
 
 if __name__ == "__main__":
     jacob_walker = Citizen("Jacob", "Walker", "Cottage St")
+    jacob_walker_clone = Citizen("Jacob", "Walker", "Cottage St")
     selena_robinson = Citizen("Selena", "Robinson", "Whitney Ave")
     frank_jones = Citizen("Frank", "Jones", "Vista Rd")
-    jacob_walker_clone = Citizen("Jacob", "Walker", "Cottage St")
 
     print(hash(jacob_walker))
     print(hash(selena_robinson))
