@@ -31,6 +31,9 @@ class UnitCircle(Circle):
     def __init__(self) -> None:
         super().__init__(1)
 
+    def __repr__(self) -> str:
+        return "UnitCircle()"
+
     @classmethod
     def from_area(cls, area: float) -> Self:
         if area != math.pi:
