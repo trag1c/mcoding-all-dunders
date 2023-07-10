@@ -43,16 +43,18 @@ class UnitCircle(Circle):
 
 def main() -> None:
     print("Module docstring:", __doc__)
-    print("Circle docstring:", Circle.__doc__)
-    print("Circle.from_area docstring:", Circle.from_area.__doc__)
     print("abs docstring:", abs.__doc__)
 
-    # not inherited
-    print("UnitCircle docstring:", UnitCircle.__doc__)
-    print("UnitCircle.from_area docstring:", UnitCircle.from_area.__doc__)
+    print("Circle docstring:", Circle.__doc__)
+    print("Circle.from_area docstring:", Circle.from_area.__doc__)
 
     print("Circle.__init__ docstring:", Circle.__init__.__doc__)
     # __doc__ is always defined, even with no docstring
+
+    # not inherited:
+    print("UnitCircle docstring:", UnitCircle.__doc__)
+    print("UnitCircle.from_area docstring:", UnitCircle.from_area.__doc__)
+
 
     help(Circle.from_area)  # in the REPL
 
