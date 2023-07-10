@@ -55,7 +55,6 @@ def main() -> None:
     print("UnitCircle docstring:", UnitCircle.__doc__)
     print("UnitCircle.from_area docstring:", UnitCircle.from_area.__doc__)
 
-
     help(Circle.from_area)  # in the REPL
 
 
