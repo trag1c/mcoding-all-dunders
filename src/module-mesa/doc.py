@@ -27,9 +27,21 @@ class Circle:
         return cls(math.sqrt(area / math.pi))
 
 
+class UnitCircle(Circle):
+    def __init__(self) -> None:
+        super().__init__(1)
+
+    @classmethod
+    def from_area(cls, area: float) -> Self:
+        if area != math.pi:
+            raise ValueError("Area must be pi")
+        return cls()
+
+
 def main() -> None:
     print("Module docstring:", __doc__)
     print("Circle docstring:", Circle.__doc__)
+    print("UnitCircle docstring:", UnitCircle.__doc__)  # not inherited
     print("Circle.from_area docstring:", Circle.from_area.__doc__)
     print("abs docstring:", abs.__doc__)
 
