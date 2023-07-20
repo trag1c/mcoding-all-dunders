@@ -3,7 +3,16 @@ class MyCoolClass:
         self.value = value
 
     def __repr__(self) -> str:
-        """repr returns string containing a printable representation of an object"""
+        """Return a string representation of the object.
+
+        For many types, the __repr__ method returns a string that would
+        recreate that object with the same value when passed to the
+        built-in eval() function.
+
+        Otherwise, the representation is a string enclosed in angle brackets
+        that contains the name of the type of the object with additional
+        information often including the name and address of the object.
+        """
         return f"MyCoolClass(value={self.value!r})"
 
     def __str__(self) -> str:
