@@ -1,3 +1,10 @@
+import re
+
+
+def some_func() -> str:
+    return "Test"
+
+
 class MyCoolClass:
     def __init__(self, *, value: str) -> None:
         self.value = value
@@ -21,23 +28,25 @@ class MyCoolClass:
 
 
 if __name__ == "__main__":
-    my_class = MyCoolClass(value="© OpenAI ®")
+    my_class = MyCoolClass(value="∫ f(x) dx")
 
     print("Printing the output from __repr__()")
     class_repr = repr(my_class)
     print("The repr is:", class_repr)
+    print(f"Calling the repr using f-string: {my_class!r}")
 
     # Evaluating the repr gives us identical object most of the time.
+    print("The evaled repr is:", repr(eval(class_repr)))
+
     # Except in some occasions like:
-    #
-    # digit_regex = re.compile(r"\d")
-    # x = lambda y: y
-    # o = object()
-    #
     # Calling eval on these objects will either not return same object
     # or result in an error.
-    print("The evaled repr is:", repr(eval(class_repr)))
-    print(f"Calling the repr using f-string: {my_class!r}")
+    digit_regex = re.compile(r"\d")
+    print(repr(digit_regex))
+    x = some_func
+    print(repr(x))
+    o = object()
+    print(repr(o))
 
     # You can use ascii to escape the non-printable characters in the repr
     print("The ascii repr of my_class is:", ascii(my_class))
