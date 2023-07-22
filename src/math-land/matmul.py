@@ -10,13 +10,22 @@ class Line:
     p_j: Point
 
     def __matmul__(self, other):
-        x1, y1 = self.p_i
-        x2, y2 = self.p_j
-        x3, y3 = other.p_i
-        x4, y4 = other.p_j
+        """Calculate the intersection between two line segments given two
+        points on each line segment. Formula extracted from:
+        https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection
+        """
+
+        ## Keeping notation from formula
+        x1, y1, x2, y2 = *self.p_i, *self.p_j
+        x3, y3, x4, y4 = *other.p_i, *other.p_j
 
         t = (x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)
-        t /= (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4)
+
+        try:
+            t /= (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4)
+        except ZeroDivisionError:
+            print("Lines are parallel")
+            return None
 
         Px = x1 + t * (x2 - x1)
         Py = y1 + t * (y2 - y1)
@@ -28,16 +37,18 @@ class Line:
         else:
             return Point(Px, Py)
 
-    def __truediv__(self, other):
-        intersection = self @ other
+    # def __truediv__(self, other):
+    #     """Division of two line segments results in four line segments"""
 
-        if intersection:
-            return (
-                Line(self.p_i, intersection),
-                Line(intersection, self.p_j),
-                Line(other.p_i, intersection),
-                Line(intersection, other.p_j),
-            )
+    #     intersection = self @ other
+
+    #     if intersection:
+    #         return (
+    #             Line(self.p_i, intersection),
+    #             Line(intersection, self.p_j),
+    #             Line(other.p_i, intersection),
+    #             Line(intersection, other.p_j),
+    #         )
 
 
 def main():
@@ -52,9 +63,20 @@ def main():
     )
 
     print(diagonal_down @ diagonal_up)
-
     print(*(diagonal_down / diagonal_up), sep="\n")
 
+    ## Parallel lines
+    diagonal_up = Line(
+        Point(0, 0),
+        Point(1, 1),
+    )
+
+    diagonal_down = Line(
+        Point(1, 0),
+        Point(2, 1),
+    )
+
+    print(diagonal_down @ diagonal_up)
 
 if __name__ == "__main__":
     main()
