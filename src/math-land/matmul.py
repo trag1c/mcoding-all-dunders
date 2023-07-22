@@ -10,8 +10,9 @@ class Line:
     p_j: Point
 
     def __matmul__(self, other):
-        """Calculate the intersection between two line segments given two
-        points on each line segment. Formula extracted from:
+        """Calculate the intersection between two line segments.
+
+        Formula from:
         https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection
         """
 
@@ -23,6 +24,7 @@ class Line:
 
         try:
             t /= (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4)
+
         except ZeroDivisionError:
             print("Lines are parallel")
             return None
@@ -53,8 +55,8 @@ class Line:
 
 
 def main():
-
-    ## Diagonal lines
+    ## Case 1: Intersection exists
+    print("Diagonal lines".center(40, "~"))
     up_right = Line(
         Point(0, 0),
         Point(1, 1),
@@ -65,32 +67,37 @@ def main():
         Point(1, 0),
     )
 
-    print(up_right @ down_right)
+    print(f"{up_right @ down_right = }")
 
-    ## Non-intersecting lines
+    ## Case 2: Intersection exists but not in the segments
+    print("\n", "Non-intersecting lines".center(40, "~"))
     up_but_away = Line(
         Point(2, 2),
         Point(2, 4),
     )
 
-    print(up_right @ up_but_away)
+    print(f"{up_right @ up_but_away = }")
 
-    ## Parallel lines
+    ## Case 3: Segments are parallel but not overlapping
+    print("\n", "Parallel lines".center(40, "~"))
 
     up_right_parallel = Line(
         Point(1, 0),
         Point(2, 1),
     )
 
-    print(up_right @ up_right_parallel)
+    print(f"{up_right @ up_right_parallel = }")
 
-    ## Overlaping lines
+    ## Case 4: Segments are overlapping
+    print("\n", "Parallel overlapping lines".center(40, "~"))
+
     up_right_overlap = Line(
         Point(0.5, 0.5),
         Point(1.5, 1.5),
     )
 
-    print(up_right @ up_right_overlap)
+    print(f"{up_right @ up_right_overlap = }")
+
 
 if __name__ == "__main__":
     main()
