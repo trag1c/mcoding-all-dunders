@@ -31,10 +31,11 @@ class Line:
         Py = y1 + t * (y2 - y1)
 
         if not 0 <= t <= 1:
-            print("Intersection out of lines")
+            print("Intersection not within line segments")
             return None
 
         else:
+            print("Intersection was found :D")
             return Point(Px, Py)
 
     # def __truediv__(self, other):
@@ -52,31 +53,44 @@ class Line:
 
 
 def main():
-    diagonal_up = Line(
+
+    ## Diagonal lines
+    up_right = Line(
         Point(0, 0),
         Point(1, 1),
     )
 
-    diagonal_down = Line(
+    down_right = Line(
         Point(0, 1),
         Point(1, 0),
     )
 
-    print(diagonal_down @ diagonal_up)
-    print(*(diagonal_down / diagonal_up), sep="\n")
+    print(up_right @ down_right)
 
-    ## Parallel lines
-    diagonal_up = Line(
-        Point(0, 0),
-        Point(1, 1),
+    ## Non-intersecting lines
+    up_but_away = Line(
+        Point(2, 2),
+        Point(2, 4),
     )
 
-    diagonal_down = Line(
+    print(up_right @ up_but_away)
+
+    ## Parallel lines
+
+    up_right_parallel = Line(
         Point(1, 0),
         Point(2, 1),
     )
 
-    print(diagonal_down @ diagonal_up)
+    print(up_right @ up_right_parallel)
+
+    ## Overlaping lines
+    up_right_overlap = Line(
+        Point(0.5, 0.5),
+        Point(1.5, 1.5),
+    )
+
+    print(up_right @ up_right_overlap)
 
 if __name__ == "__main__":
     main()
