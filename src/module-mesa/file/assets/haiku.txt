@@ -1,0 +1,3 @@
+I am a haiku
+Inside of a small text file
+Waiting to be read
