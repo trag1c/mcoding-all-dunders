@@ -2,7 +2,7 @@ import re
 
 
 class MyCoolClass:
-    def __init__(self, *, value: str) -> None:
+    def __init__(self, value: str) -> None:
         self.value = value
 
     def __repr__(self) -> str:
